@@ -13,5 +13,20 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult AdminUsers()
+        {
+            return View("AdminUsers/Index");
+        }
+
+        public ActionResult PrivateSellers()
+        {
+            return View("PrivateSellers/Index");
+        }
+
+        public ActionResult Agents()
+        {
+            return View("Agents/Index");
+        }
     }
 }

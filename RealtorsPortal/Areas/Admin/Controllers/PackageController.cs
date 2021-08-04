@@ -13,5 +13,10 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult WhoSubscribed()
+        {
+            return View();
+        }
     }
 }

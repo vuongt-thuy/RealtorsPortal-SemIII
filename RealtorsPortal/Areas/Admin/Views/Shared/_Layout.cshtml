@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@RenderSection("title", required: true)</title>
 
+    @RenderSection("css", required: false)
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -25,6 +27,7 @@
     <link rel="stylesheet" href="~/Areas/Content/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="~/Areas/Content/plugins/summernote/summernote-bs4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -224,7 +227,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index", "Areas")" class="nav-link">
+                            <a href="@Url.Action("Index", "Area")" class="nav-link">
                                 <i class="nav-icon fas fa-location-arrow"></i>
                                 <p>
                                     Area Management
@@ -239,11 +242,35 @@
                                 </p>
                             </a>
                         </li>
+                        @*<li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fab fa-connectdevelop"></i>
+                                <p>
+                                    Traders Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../mailbox/mailbox.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Private Seller</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../mailbox/compose.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agents</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Package")" class="nav-link">
                                 <i class="nav-icon fas fa-cubes"></i>
                                 <p>
-                                    Subscription Packages Management
+                                    Advertisement Packages Management
                                 </p>
                             </a>
                         </li>
@@ -278,12 +305,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">@RenderSection("section-title", required: true)</h1>
+                            <h1 class="m-0">@RenderSection("section_title", required: true)</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">@RenderSection("breadcrumb", required: true)</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -347,5 +374,7 @@
     <script src="~/Areas/Content/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/Areas/Content/dist/js/pages/dashboard.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

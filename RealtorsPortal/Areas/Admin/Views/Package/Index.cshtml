@@ -1,8 +1,179 @@
-﻿    
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@section title { Advertisement  Package Management}
+@section section_title { Advertisement  Packages Management }
+@section breadcrumb { Advertisement  Packages Management }
 
+<div class="row">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modelPackage" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add New Package
+        </button>
+    </div>
+    <div class="col-md-6">
+        <a href="@Url.Action("WhoSubscribed" , "Package")" class="btn btn-warning" style="width: 400px;">
+            <i class="fas fa-list"></i> Who Subscribed Advertising Packages
+        </a>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Package VIP 1</h3>
+
+                <div class="card-tools">
+                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                The body of the card
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Package VIP 2</h3>
+
+                <div class="card-tools">
+                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                The body of the card
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Package VIP 3</h3>
+
+                <div class="card-tools">
+                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                The body of the card
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Package VIP 4</h3>
+
+                <div class="card-tools">
+                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                The body of the card
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Package VIP 4</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                The body of the card
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+<div class="modal fade" id="modelPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add/Edit Package</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Code</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Status</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+}

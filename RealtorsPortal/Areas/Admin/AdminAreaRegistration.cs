@@ -15,6 +15,12 @@ namespace RealtorsPortal.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Admin_login",
+                "Admin/Login",
+                new { action = "Login", controller = "Main" }
+            );
+
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

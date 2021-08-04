@@ -4,5 +4,40 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@section title { Account Management}
+@section section_title { Account Management }
+@section breadcrumb { Account Management }
+
+<div class="row">
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h5>Admin Users</h5>
+            </div>
+            <a href="@Url.Action("AdminUsers", "Account")" class="small-box-footer">Get more <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h5>Private Sellers</h5>
+            </div>
+            <a href="@Url.Action("PrivateSellers", "Account")" class="small-box-footer">Get more <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h5>Agents</h5>
+            </div>
+            <a href="@Url.Action("Agents", "Account")" class="small-box-footer">Get more <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
 

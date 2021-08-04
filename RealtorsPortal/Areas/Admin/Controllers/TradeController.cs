@@ -13,5 +13,17 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             return View();
         }
+
+        //[ActionName("Edit")]
+        public ActionResult EditAgent()
+        {
+            return View("EditAgent");
+        }
+
+        //[ActionName("Edit")]
+        public ActionResult EditPrivateSeller()
+        {
+            return View("EditPrivateSeller");
+        }
     }
 }

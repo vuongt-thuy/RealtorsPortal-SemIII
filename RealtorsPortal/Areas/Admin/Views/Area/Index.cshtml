@@ -4,14 +4,75 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section css {
+    <link rel="stylesheet" href="~/Areas/Content/plugins/select2/css/select2.min.css">
+}
 @section title { Area Management}
 @section section_title { Area Management }
+@section breadcrumb { Area Management }
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelCountry" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add New Country
+        </button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn" data-toggle="modal" data-target="#modelCity" style="background:#6c757d; width: 200px; color: white;">
+            <i class="fas fa-plus"></i>  Add New City
+        </button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn" data-toggle="modal" data-target="#modelDistrict" style="background:#17a2b8; width: 200px; color: white;">
+            <i class="fas fa-plus"></i>  Add New District
+        </button>
+    </div>
+</div>
+<div class="container" style="margin-top: 50px;">
+    <form action="enhanced-results.html">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Result Type:</label>
+                            <select class="select2" style="width: 100%;">
+                                <option>Country</option>
+                                <option>City</option>
+                                <option>District</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label>Sort Order:</label>
+                            <select class="select2" style="width: 100%;">
+                                <option selected>ASC</option>
+                                <option>DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Country</h3>
+                <h3 class="card-title">Listing</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -19,147 +80,149 @@
                     </button>
                 </div>
             </div>
+
             <div class="card-body" style="display: block;">
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" id="name"  class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputDescription">Project Description</label>
-                    <textarea id="inputDescription" class="form-control" rows="4">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="inputStatus">Status</label>
-                    <select id="inputStatus" class="form-control custom-select">
-                        <option disabled="">Select one</option>
-                        <option>On Hold</option>
-                        <option>Canceled</option>
-                        <option selected="">Success</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="inputClientCompany">Client Company</label>
-                    <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
-                </div>
-                <div class="form-group">
-                    <label for="inputProjectLeader">Project Leader</label>
-                    <input type="text" id="inputProjectLeader" class="form-control" value="Tony Chicken">
-                </div>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <div class="col-md-6">
-        <div class="card card-secondary">
-            <div class="card-header">
-                <h3 class="card-title">Budget</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="inputEstimatedBudget">Estimated budget</label>
-                    <input type="number" id="inputEstimatedBudget" class="form-control" value="2300" step="1">
-                </div>
-                <div class="form-group">
-                    <label for="inputSpentBudget">Total amount spent</label>
-                    <input type="number" id="inputSpentBudget" class="form-control" value="2000" step="1">
-                </div>
-                <div class="form-group">
-                    <label for="inputEstimatedDuration">Estimated project duration</label>
-                    <input type="number" id="inputEstimatedDuration" class="form-control" value="20" step="0.1">
-                </div>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">Files</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body p-0">
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>File Name</th>
-                            <th>File Size</th>
-                            <th></th>
+                            <th style="width: 10px">#</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th width="150">Status</th>
+                            <th width="115"></th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
-                            <td>Functional-requirements.docx</td>
-                            <td>49.8005 kb</td>
-                            <td class="text-right py-0 align-middle">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div>
+                            <td>1.</td>
+                            <td>Viet Nam</td>
+                            <td>
+                                VN
                             </td>
-                        </tr>
-                        <tr>
-                            <td>UAT.pdf</td>
-                            <td>28.4883 kb</td>
-                            <td class="text-right py-0 align-middle">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div>
+                            <td></td>
+                            <td>
+                                <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Email-from-flatbal.mln</td>
-                            <td>57.9003 kb</td>
-                            <td class="text-right py-0 align-middle">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Logo.png</td>
-                            <td>50.5190 kb</td>
-                            <td class="text-right py-0 align-middle">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Contract-10_12_2014.docx</td>
-                            <td>44.9715 kb</td>
-                            <td class="text-right py-0 align-middle">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                </div>
-                            </td>
-
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="clearfix" style="margin-top: 15px;">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    </ul>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
 </div>
+<div class="modal fade" id="modelCountry" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add New Country</h5>
 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Code</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Status</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modelCity" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add New City</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Code</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Status</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modelDistrict" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add New District</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Code</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Status</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Areas/Content/plugins/select2/js/select2.full.min.js"></script>
+    <script>
+        $(function () {
+            $('.select2').select2()
+        });
+    </script>
+}

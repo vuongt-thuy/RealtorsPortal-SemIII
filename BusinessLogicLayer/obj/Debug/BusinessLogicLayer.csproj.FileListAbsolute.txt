@@ -1,0 +1,6 @@
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojAssemblyReference.cache
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

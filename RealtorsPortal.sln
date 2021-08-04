@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtorsPortal", "RealtorsPortal\RealtorsPortal.csproj", "{9601E44A-D63E-4F36-8706-42482E43FC4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{89A465F0-0779-4234-85E3-D250195E581B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{692D8BEA-5022-4070-A1F4-73CBAFEA5378}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9601E44A-D63E-4F36-8706-42482E43FC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9601E44A-D63E-4F36-8706-42482E43FC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9601E44A-D63E-4F36-8706-42482E43FC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A465F0-0779-4234-85E3-D250195E581B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A465F0-0779-4234-85E3-D250195E581B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A465F0-0779-4234-85E3-D250195E581B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A465F0-0779-4234-85E3-D250195E581B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692D8BEA-5022-4070-A1F4-73CBAFEA5378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692D8BEA-5022-4070-A1F4-73CBAFEA5378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692D8BEA-5022-4070-A1F4-73CBAFEA5378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692D8BEA-5022-4070-A1F4-73CBAFEA5378}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
