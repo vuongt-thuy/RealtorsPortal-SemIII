@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Information";
+    Layout = "~/Areas/UserBackend/Views/Shared/_Layout.cshtml";
+}
+
+@section page_title { Profile}
+@section breadcrumb { Profile }
+<div class="row">
+    <!-- Start col -->
+    <div class="col-lg-12">
+        <div class="card m-b-30">
+            <div class="card-header">
+                <h3 class="card-title">Change Profile</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label style="font-weight: bold">Avatar</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="file" name="name" value="" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-2">
+                                <label style="font-weight: bold">Type of User</label>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="select2-single form-control select2-hidden-accessible" style="width: 50%">
+                                    <option value="value">Select Options</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-2">
+                                <label style="font-weight: bold">Gender</label>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline1">Female</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline2">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline3">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-2">
+                                <label style="font-weight: bold">Detail Information</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Fullname</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-user-o"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Email</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-envelope-o"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Phone Number</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Address</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-map-marker"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Save changes</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End col -->
+</div>

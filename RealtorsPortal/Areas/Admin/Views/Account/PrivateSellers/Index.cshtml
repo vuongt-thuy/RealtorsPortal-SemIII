@@ -16,6 +16,14 @@
 @section breadcrumb { Private Sellers Account }
 
 <div class="row">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add New Account
+        </button>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
     <div class="col-md-12">
         <div class="card">
 
@@ -47,7 +55,9 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="@Url.Action("EditPrivateSellers", "Trade")" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
@@ -66,7 +76,9 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
@@ -85,13 +97,47 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                                    <i class="fas fa-edit"></i>
+                                </button>
                                 <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add/Edit Form</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Code</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Status</label>
+                    <input type="text" id="code" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>

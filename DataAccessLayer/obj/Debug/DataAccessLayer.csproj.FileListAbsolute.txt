@@ -1,0 +1,12 @@
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache

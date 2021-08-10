@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "ListAll";
+    Layout = "~/Areas/UserBackend/Views/Shared/_Layout.cshtml";
+}
+
+@section page_title { All Articles}
+@section breadcrumb { All Articles }
+
+@section css {
+    <!-- Datepicker css -->
+    <link href="~/Areas/UserBackend/Content/assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/flag-icon.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/style.css" rel="stylesheet" type="text/css">
+}
+
+<div class="row">
+    <!-- Start col -->
+    <div class="col-lg-12">
+        <div class="card m-b-30">
+            <div class="card-header">
+                <h5 class="card-title">Posted Articles</h5>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-5" style="display: block; float: left;">
+                        <label>Date Post</label>
+                        <div class="input-group">
+                            <input type="text" id="range-date" class="datepicker-here form-control" placeholder="Start Date - End Date" aria-describedby="basic-addon7">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon7"><i class="ri-calendar-line"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7" style="display: block; float: right;">
+                        <label>Search</label>
+                        <input type="text" class="form-control" name="inputText" id="inputText" placeholder="Title Of Article">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col" width="45"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>
+                                    <div class="tabledit-toolbar btn-toolbar">
+                                        <div class="btn-group btn-group-sm" style="float: none;">
+                                            <a href="/Article/Edit/1" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>at</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End col -->
+</div>
+
+@section scripts {
+    <!-- Datepicker JS -->
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datepicker/datepicker.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datepicker/i18n/datepicker.en.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/js/custom/custom-form-datepicker.js"></script>
+
+}
+

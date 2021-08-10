@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="ltn__checkout-single-content mt-50">
+            <h4 class="title-2">Edit Article</h4>
+            <div class="ltn__checkout-single-content-info">
+                <h6>Location</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Country</label>
+                        <div class="input-item">
+                            <select class="nice-select" style="display: none;">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select><div class="nice-select" tabindex="0"><span class="current">Select Country</span><ul class="list"><li data-value="Select Country" class="option selected">Select Country</li><li data-value="Australia" class="option">Australia</li><li data-value="Canada" class="option">Canada</li><li data-value="China" class="option">China</li><li data-value="Morocco" class="option">Morocco</li><li data-value="Saudi Arabia" class="option">Saudi Arabia</li><li data-value="United Kingdom (UK)" class="option">United Kingdom (UK)</li><li data-value="United States (US)" class="option">United States (US)</li></ul></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Town/City</label>
+                        <div class="input-item">
+                            <select class="nice-select" style="display: none;">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select><div class="nice-select" tabindex="0"><span class="current">Select Country</span><ul class="list"><li data-value="Select Country" class="option selected">Select Country</li><li data-value="Australia" class="option">Australia</li><li data-value="Canada" class="option">Canada</li><li data-value="China" class="option">China</li><li data-value="Morocco" class="option">Morocco</li><li data-value="Saudi Arabia" class="option">Saudi Arabia</li><li data-value="United Kingdom (UK)" class="option">United Kingdom (UK)</li><li data-value="United States (US)" class="option">United States (US)</li></ul></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>District</label>
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Street</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Detail Address</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ltn__checkout-single-content-info" style="margin-top: 50px;">
+                <h6>Real Estate Information</h6>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>I am</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Choose object</option>
+                                <option>Chính chủ</option>
+                                <option>Môi giới</option>
+                                <option>Ngân hàng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Need</label>
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Need</option>
+                                <option>Rent</option>
+                                <option>Buy</option>
+                                <option>Sell</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Type Of Buiding</label>
+
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Type Of Buiding</option>
+                                <option>Nhà cấp 4</option>
+                                <option>Biệt thự</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Area Land (m2)</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Price(Unit: 0$/m2)</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>Describe your property in detail to increase credibility and reach more customers.</h5>
+                        <label>Title</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ltn__checkout-single-content-info" style="margin-top: 50px;">
+                <h6>Contact Information</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fullname</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone Number</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Note</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <textarea name="note"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-wrapper text-right ">
+                <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">SAVE</a>
+            </div>
+        </div>
+    </div>
+</div>
+

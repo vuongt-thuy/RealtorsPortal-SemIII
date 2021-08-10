@@ -1,0 +1,433 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="ltn__checkout-single-content mt-50">
+            <h4 class="title-2">Post Article</h4>
+            <div class="ltn__checkout-single-content-info">
+                <h6>Location</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Country</label>
+                        <div class="input-item">
+                            <select class="nice-select" style="display: none;">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select><div class="nice-select" tabindex="0"><span class="current">Select Country</span><ul class="list"><li data-value="Select Country" class="option selected">Select Country</li><li data-value="Australia" class="option">Australia</li><li data-value="Canada" class="option">Canada</li><li data-value="China" class="option">China</li><li data-value="Morocco" class="option">Morocco</li><li data-value="Saudi Arabia" class="option">Saudi Arabia</li><li data-value="United Kingdom (UK)" class="option">United Kingdom (UK)</li><li data-value="United States (US)" class="option">United States (US)</li></ul></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Town/City</label>
+                        <div class="input-item">
+                            <select class="nice-select" style="display: none;">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select><div class="nice-select" tabindex="0"><span class="current">Select Country</span><ul class="list"><li data-value="Select Country" class="option selected">Select Country</li><li data-value="Australia" class="option">Australia</li><li data-value="Canada" class="option">Canada</li><li data-value="China" class="option">China</li><li data-value="Morocco" class="option">Morocco</li><li data-value="Saudi Arabia" class="option">Saudi Arabia</li><li data-value="United Kingdom (UK)" class="option">United Kingdom (UK)</li><li data-value="United States (US)" class="option">United States (US)</li></ul></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>District</label>
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Country</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Morocco</option>
+                                <option>Saudi Arabia</option>
+                                <option>United Kingdom (UK)</option>
+                                <option>United States (US)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Street</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Detail Address</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ltn__checkout-single-content-info" style="margin-top: 50px;">
+                <h6>Real Estate Information</h6>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>I am</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Choose object</option>
+                                <option>Chính chủ</option>
+                                <option>Môi giới</option>
+                                <option>Ngân hàng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Need</label>
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Need</option>
+                                <option>Rent</option>
+                                <option>Buy</option>
+                                <option>Sell</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Type Of Buiding</label>
+
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>Select Type Of Buiding</option>
+                                <option>Nhà cấp 4</option>
+                                <option>Biệt thự</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Area Land (m2)</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Price(Unit: 0$/m2)</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="email" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>Describe your property in detail to increase credibility and reach more customers.</h5>
+                        <label>Title</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ltn__checkout-single-content-info" style="margin-top: 50px;">
+                <h6>Contact Information</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fullname</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone Number</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <input type="text" name="ltn__email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Note</label>
+                        <div class="input-item input-item-textarea ltn__custom-icon">
+                            <textarea name="note"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ltn__checkout-single-content-info" style="margin-top: 50px;">
+                <h6>Choose Advertise Package </h6>
+                <div class="ltn__our-history-inner">
+                    <div class="ltn__tab-menu text-uppercase">
+                        <div class="nav">
+                            <a data-toggle="tab" href="#liton_tab_2_1">VIP 1</a>
+                            <a class="active show" data-toggle="tab" href="#liton_tab_2_2">VIP 2</a>
+                            <a data-toggle="tab" href="#liton_tab_2_3">VIP 3</a>
+                            <a data-toggle="tab" href="#liton_tab_2_5">NORMAL</a>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="liton_tab_2_1">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row">
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-img-wrap about-img-left">
+                                            <img src="img/img-slide/12.jpg" alt="Image">
+                                            <div class="ltn__history-icon">
+                                                <i class="fas fa-award"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-info-wrap">
+                                            <div class="section-title-area ltn__section-title-2--- text-center---">
+                                                <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Our History</h6>
+                                                <h1 class="section-title">We Started Our Journey</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                            </div>
+
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. consectetur adipis icing elit, sed do eius mod t</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade active show" id="liton_tab_2_2">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row">
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-img-wrap about-img-left">
+                                            <img src="img/img-slide/11.jpg" alt="Image">
+                                            <div class="ltn__history-icon">
+                                                <i class="icon-award"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-info-wrap">
+                                            <div class="section-title-area ltn__section-title-2--- text-center---">
+                                                <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
+                                                <h1 class="section-title">
+                                                    It Was An Sweet
+                                                    Journey Time
+                                                </h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                            </div>
+
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. consectetur adipis icing elit, sed do eius mod t</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_2_3">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row">
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-img-wrap about-img-left">
+                                            <img src="img/img-slide/13.jpg" alt="Image">
+                                            <div class="ltn__history-icon">
+                                                <i class="fas fa-medal"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-info-wrap">
+                                            <div class="section-title-area ltn__section-title-2--- text-center---">
+                                                <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
+                                                <h1 class="section-title">
+                                                    It Was An Sweet
+                                                    Journey Time
+                                                </h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                            </div>
+
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. consectetur adipis icing elit, sed do eius mod t</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="liton_tab_2_5">
+                            <div class="ltn__product-tab-content-inner">
+                                <div class="row">
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-img-wrap about-img-left">
+                                            <img src="img/img-slide/11.jpg" alt="Image">
+                                            <div class="ltn__history-icon">
+                                                <i class="fas fa-trophy"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 align-self-center">
+                                        <div class="about-us-info-wrap">
+                                            <div class="section-title-area ltn__section-title-2--- text-center---">
+                                                <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
+                                                <h1 class="section-title">
+                                                    It Was An Sweet
+                                                    Journey Time
+                                                </h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                            </div>
+
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. consectetur adipis icing elit, sed do eius mod t</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Day</label>
+                        <div class="input-item">
+                            <select class="nice-select">
+                                <option>7</option>
+                                <option>15</option>
+                                <option>30</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Start Date</label>
+                        <div class="input-item">
+                            <input type="date" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>End Date</label>
+                        <div class="input-item">
+                            <input type="date" name="ltn__email" placeholder="email address">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-details-apartments-info-list  section-bg-1" style="margin-top: 50px">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="apartments-info-list apartments-info-list-color mt-40---">
+                            <ul>
+                                <li><label>Total (VAT)</label> <span>2800 Sq. Ft</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="apartments-info-list apartments-info-list-color mt-40---">
+                            <ul>
+                                <li><label>Discount</label> <span>150 Sq. Ft</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="apartments-info-list apartments-info-list-color mt-40---">
+                            <ul>
+                                <li><label><h4>SubTotal</h4></label> <span><h4>150 Sq. Ft</h4></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-wrapper text-center ">
+                <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color" id="previewArticle" style="cursor: pointer;">Preview</h6>
+            </div>
+            <div class="btn-wrapper text-right ">
+                <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">POST</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AREA START (Quick View Modal) -->
+<div class="ltn__modal-area ltn__quick-view-modal-area" style="width: 1000px;">
+    <div class="modal fade" id="quick_view_modal" tabindex="-1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <!-- <i class="fas fa-times"></i> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ltn__quick-view-modal-inner">
+                        <div class="modal-product-item">
+                            <div class="row">
+                                <div class="col-lg-12 col-12">
+                                    <div id="pre-image">
+                                        <div>
+                                            <img src="https://acihome.vn/wp-content/uploads/2020/07/cac-phan-khu-chuc-nang-tai-resort.jpg" alt="Alternate Text" />
+                                        </div>
+                                        <div>
+                                            <img src="https://top.cdnxbvn.com/wp-content/uploads/2020/07/dia-diem-nghi-duong-viet-nam-mien-tay.jpg" alt="Alternate Text" />
+                                        </div>
+                                        <div>
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3fXFluTC6mAYk1echYjpt_XWRGBdHThB03l70erR38UskYnpkJ3keVoNT4U9Kr8W6kqg&usqp=CAU" alt="Alternate Text" />
+                                        </div>
+                                        <div>
+                                            <img src="https://dulichvietnam.com.vn/vnt_upload/news/10_2019/khu-nghi-duong-o-mien-tay-3.jpg" alt="Alternate Text" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12" style="margin-top: 40px;">
+                                    <h4 class="ltn__widget-title ltn__widget-title-border-2">Description</h4>
+                                    <div class="property-detail-info-list section-bg-1 clearfix mb-60">
+                                        <ul>
+                                            <li><label>Property ID:</label> <span>HZ29</span></li>
+                                            <li><label>Home Area: </label> <span>120 sqft</span></li>
+                                            <li><label>Rooms:</label> <span>7</span></li>
+                                            <li><label>Baths:</label> <span>2</span></li>
+                                            <li><label>Year built:</label> <span>1992</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL AREA END -->
+@section scripts {
+    <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    <script>
+        CKEDITOR.replace('description');
+
+        $(document).ready(function () {
+            $('#checkbox1').click(function () {
+                var checkedBox = $(this).attr("checked");
+                if (checkedBox === true) {
+                    $("#checkbox2").attr('checked', false);
+                } else {
+                    $("#checkbox2").removeAttr('checked');
+                }
+            });
+        });
+
+        $("#previewArticle").click(function () {
+            $('#quick_view_modal').modal('show');
+        })
+
+        $('#pre-image').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+
+
+    </script>
+}

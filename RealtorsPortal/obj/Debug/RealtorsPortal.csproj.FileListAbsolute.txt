@@ -51,6 +51,10 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\roslyn\VBCSCompiler.exe
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\roslyn\VBCSCompiler.exe.config
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Antlr3.Runtime.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\BusinessLogicLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\DataAccessLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.SqlServer.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Microsoft.Web.Infrastructure.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Newtonsoft.Json.dll
@@ -62,6 +66,12 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.WebPages.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.WebPages.Razor.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\WebGrease.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\BusinessLogicLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\BusinessLogicLayer.dll.config
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\DataAccessLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\DataAccessLayer.dll.config
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.SqlServer.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Helpers.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Mvc.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Optimization.xml

@@ -1,4 +1,5 @@
-﻿
+﻿@model DataAccessLayer.Models.Entities.User
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -9,6 +10,14 @@
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <style>
+        .error {
+            color:red;
+            font-size: 14px;
+        }
+    </style>
 }
 
 @section title { Admin Users Account }
@@ -16,6 +25,14 @@
 @section breadcrumb { Admin Users Account }
 
 <div class="row">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add New Account
+        </button>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
     <div class="col-md-12">
         <div class="card">
 
@@ -24,80 +41,138 @@
                     <thead>
                         <tr>
                             <th>NO.</th>
-                            <th>Name</th>
+                            <th>Username</th>
                             <th>Phone</th>
-                            <th>Engine version</th>
-                            <th>Status</th>
+                            <th>Email</th>
+                            <th>Active</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                ccc
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("EditPrivateSellers", "Trade")" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                bbb
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                aaa
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Add New Admin User</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/" method="post" id="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Avt)
+                                @Html.EditorFor(model => model.Avt, new { htmlAttributes = new { type = "file" } })
+                                @Html.ValidationMessageFor(model => model.Avt, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Username</label>
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone)
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Birthday)
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Gender)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Gender" value="true" checked>
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Gender" value="false">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address)
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Company)
+                                @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Company, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RoleId)
+                                @Html.DropDownListFor(model => model.RoleId, new SelectList(ViewBag.Roles, "Id", "Name"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Active)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="true" checked>
+                                    <label class="form-check-label">On</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="false">
+                                    <label class="form-check-label">Off</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 @section scripts {
+    <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -105,18 +180,196 @@
     <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
 
     <script>
+        var formStatus = 'create'
+
         $(function () {
-
-            $("#tblPrivateSeller").DataTable()
-
-            $("#tblAgent").DataTable()
+            LoadData()
         });
 
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
+
+        function LoadData() {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/LoadAdminUsers",
+                success: function (res) {
+                    var data = []
+                    for (var i = 0; i < res.length; i++) {
+                        data[i] = {
+                            "No": i + 1,
+                            "Username": res[i].Username,
+                            "Phone": res[i].Phone,
+                            "Email": res[i].Email,
+                            "Active": res[i].Active,
+                            "":
+                                "<a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
+                        }
+                    }
+                    $('#tblPrivateSeller').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'No' },
+                            { data: 'Username' },
+                            { data: 'Phone' },
+                            { data: 'Email' },
+                            { data: 'Active' },
+                            { data: '' },
+                        ],
+                        "bDestroy": true
+                    });
+                }
+            })
+        }
+
+        $(document).on("click", "#btnDelete", function () {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/AdminUsersDelete",
+                data: { id: $(this).data("id") },
+                success: function (res) {
+                    LoadData()
+                    console.log(res.msg)
+                    toastr.success(res.msg)
+                }
+            })
+        })
+
+        $(document).on("click", "#btnEdit", function () {
+            formStatus = 'edit'
+            $("#modalTitle").html("Edit Admin User")
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/Get",
+                data: { id: $(this).data("id") },
+                success: function (res) {
+                    var user = res.data
+                    $("#Id").val(user.Id)
+                    $("#Username").val(user.Username)
+                    $("#Phone").val(user.Phone)
+                    $("#Email").val(user.Email)
+                    //$("#Avt").val(user.Avt)
+                    $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
+                    $("#Birthday").val(user.Birthday)
+                    $("#Address").val(user.Address)
+                    $("#Company").val(user.Company)
+                    $("#RoleId").val(user.RoleId).attr("selected", "selected")
+                    $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
+                }
+            })
+            ShowModal()
+        })
+
+        var formValidate = $("#form").validate({
+            submitHandler: function () {
+                event.preventDefault()
+                var User = {
+                    Id: $("#Id").val(),
+                    Username: $("#Username").val(),
+                    Password: $("#Password").val(),
+                    Phone: $("#Phone").val(),
+                    Email: $("#Email").val(),
+                    Avt: $('#Avt').prop('files')[0] ? $('#Avt').prop('files')[0].name : "",
+                    Gender: $('input[name="Gender"]:checked').val(),
+                    Birthday: $("#Birthday").val(),
+                    Address: $("#Address").val(),
+                    Company: $("#Company").val(),
+                    RoleId: $("select#RoleId option").filter(":selected").val(),
+                    Active: $('input[name="Active"]:checked').val(),
+                }
+
+                if (formStatus == 'create') {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Account/AdminUsersCreate",
+                        data: { user: User },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                UploadImage()
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                } else if (formStatus == 'edit') {
+                    User.Id = $("#Id").val()
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Account/AdminUsersEdit",
+                        contentType: false,
+                        processData: false,
+                        data: { user: formData },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+
+        //$("#btnSave").click(function () {
+
+        //})
+
+        function UploadImage() {
+            var fileUpload = $("#Avt").get(0);
+            var file = fileUpload.files[0];
+            var formData = new FormData();
+            if (file != null) {
+                formData.append("image", file);
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Account/UploadImage",
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                data: formData,
+                success: function (res) {
+
+                }
+            })
+        }
+
+        function CloseModal() {
+            $('#modal').modal('hide');
+        }
+
+        function ShowModal() {
+            $('#modal').modal('show');
+        }
+
+        $('#modal').on('hidden.bs.modal', function () {
+            ClearValue()
+        })
+
+        function ClearValue() {
+            formStatus = 'create'
+            $("#modalTitle").html("Add New Admin User")
+            $("#Username").val("")
+            $("#Password").val("")
+            $("#Phone").val("")
+            $("#Email").val("")
+            $("#Avt").val("")
+            $("#Gender").val("")
+            $("#Birthday").val("")
+            $("#Address").val("")
+            $("#Company").val("")
+        }
 
     </script>
 }
