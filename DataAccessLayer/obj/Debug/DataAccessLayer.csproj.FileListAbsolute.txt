@@ -9,4 +9,3 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache

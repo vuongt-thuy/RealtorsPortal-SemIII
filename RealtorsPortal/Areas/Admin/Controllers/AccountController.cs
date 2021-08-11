@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Respositories;
 using DataAccessLayer.Models.Entities;
+using RealtorsPortal.Areas.Admin.Utils;
 using RealtorsPortal.Controllers;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace RealtorsPortal.Areas.Admin.Controllers
 {
+    [CustomeAuthentication]
     public class AccountController : Controller
     {
         private Respository<User> resUser;
@@ -24,7 +26,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public JsonResult Get(int id)
@@ -49,16 +51,34 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.Avt = "/Uploads/Users/" + user.Avt;
-                user.CreatedAt = DateTime.Now;
-                user.UpdatedAt = DateTime.Now;
-                if (resUser.Create(user))
+                if (!resUser.CheckDuplicate(x => x.Username.Equals(user.Username)))
                 {
-                    return Json(new ResponeJSON<User>
+                    if (user.Avt != null)
                     {
-                        statusCode = 200,
-                        msg = "Create Admin User Successfully!",
-                        data = user
+                        user.Avt = "/Uploads/Users/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Create(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Create Admin User Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Username", "Username is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Admin User Fail!",
+                        data = error
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -79,7 +99,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
                 statusCode = 201,
                 msg = "Create Admin User Fail!",
                 data = errors
-            }, JsonRequestBehavior.AllowGet); ;
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -87,15 +107,34 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.CreatedAt = DateTime.Now;
-                user.UpdatedAt = DateTime.Now;
-                if (resUser.Update(user))
+                if (!resUser.CheckDuplicate(x => x.Username.Equals(user.Username) && x.Id != user.Id))
                 {
-                    return Json(new ResponeJSON<User>
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/Users/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Update(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Update Admin User Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Username", "Username is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
                     {
                         statusCode = 201,
                         msg = "Create Admin User Fail!",
-                        data = user
+                        data = error
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -114,7 +153,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             return Json(new ResponeJSON<Dictionary<string, string>>
             {
                 statusCode = 201,
-                msg = "Create Admin User Fail!",
+                msg = "Update Admin User Fail!",
                 data = errors
             }, JsonRequestBehavior.AllowGet);
         }

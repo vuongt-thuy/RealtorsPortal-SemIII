@@ -33,7 +33,7 @@ namespace BusinessLogicLayer.Respositories
                 Save();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -83,7 +83,12 @@ namespace BusinessLogicLayer.Respositories
             }
         }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
+        public T GetOne(Expression<Func<T, bool>> predicate)
+        {
+            return tbl.Where(predicate).FirstOrDefault();
+        }
+
+        public IEnumerable<T> GetList(Expression<Func<T, bool>> predicate)
         {
             return tbl.Where(predicate).AsNoTracking().AsEnumerable();
         }

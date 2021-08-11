@@ -1,4 +1,5 @@
-﻿@model DataAccessLayer.Models.Entities.User
+﻿
+@model DataAccessLayer.Models.Entities.User
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +15,7 @@
 
     <style>
         .error {
-            color:red;
+            color: red;
             font-size: 14px;
         }
     </style>
@@ -71,38 +72,38 @@
                 <div class="modal-body">
                     <div class="row">
                         @Html.HiddenFor(model => model.Id)
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Avt)
-                                @Html.EditorFor(model => model.Avt, new { htmlAttributes = new { type = "file" } })
-                                @Html.ValidationMessageFor(model => model.Avt, null, new { @class = "text-danger" })
+                                @Html.Editor("fileImage", new { htmlAttributes = new { type = "file" } })
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="#" name="Avt" id="Avt" width="200" height="250" />
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputName">Username</label>
                                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Username, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Phone)
                                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email)
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Birthday)
-                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @id = "Birthday" } })
+                                
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -122,21 +123,18 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Password)
                                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
-                                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Address)
                                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Company)
                                 @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Company, null, new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -159,11 +157,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" >Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
 
@@ -181,13 +178,15 @@
     <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
     <script>
-        var formStatus = 'create'
-
         $(function () {
-            LoadData()
+            LoadData();
+            $("#Avt").hide();
         });
+
+        var formStatus = 'create'
 
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
@@ -205,7 +204,7 @@
                             "Username": res[i].Username,
                             "Phone": res[i].Phone,
                             "Email": res[i].Email,
-                            "Active": res[i].Active,
+                            "Active": res[i].Active ? "<span class='badge bg-primary'>Active</span>" : "<span class='badge bg-warning'>Deactivate</span>",
                             "":
                                 "<a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
                         }
@@ -226,17 +225,40 @@
             })
         }
 
-        $(document).on("click", "#btnDelete", function () {
-            $.ajax({
-                type: "GET",
-                url: "/Admin/Account/AdminUsersDelete",
-                data: { id: $(this).data("id") },
-                success: function (res) {
-                    LoadData()
-                    console.log(res.msg)
-                    toastr.success(res.msg)
+
+        $("#fileImage").change(function (e) {
+            productImg = $("#fileImage")[0].files[0]
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.getElementById("Avt");
+                img.alt = "Description Image";
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    img.src = reader.result;
                 }
-            })
+                reader.readAsDataURL(file);
+                $("#fileImage").after($("#Avt").show())
+            }
+        })
+
+        $(document).on("click", "#btnDelete", function () {
+            var confirmation = confirm("Do you want delete this user?");
+
+            if (confirmation) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/Account/AdminUsersDelete",
+                    data: { id: $(this).data("id") },
+                    success: function (res) {
+                        LoadData()
+                        console.log(res.msg)
+                        toastr.success(res.msg)
+                    }
+                })
+            }
         })
 
         $(document).on("click", "#btnEdit", function () {
@@ -252,13 +274,36 @@
                     $("#Username").val(user.Username)
                     $("#Phone").val(user.Phone)
                     $("#Email").val(user.Email)
-                    //$("#Avt").val(user.Avt)
                     $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
-                    $("#Birthday").val(user.Birthday)
                     $("#Address").val(user.Address)
+                    $("#Password").val(user.Password)
+                    //$("#Birthday").val(user.Birthday)
                     $("#Company").val(user.Company)
                     $("#RoleId").val(user.RoleId).attr("selected", "selected")
                     $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
+
+
+                    console.log(user.Birthday)
+
+                    function join(t, a, s) {
+                        function format(m) {
+                            let f = new Intl.DateTimeFormat('en', m);
+                            return f.format(t);
+                        }
+                        return a.map(format).join(s);
+                    }
+
+                    let a = [{ day: 'numeric' }, { month: 'short' }, { year: 'numeric' }];
+                    let s = join(new Date(parseInt(1630342800000)), a, '-');
+                    console.log(s);
+
+
+                    if (user.Avt != null) {
+                        $("#Avt").show()
+                        $('#Avt').attr("src", user.Avt);
+                    }
+
+                    console.log(user)
                 }
             })
             ShowModal()
@@ -273,7 +318,7 @@
                     Password: $("#Password").val(),
                     Phone: $("#Phone").val(),
                     Email: $("#Email").val(),
-                    Avt: $('#Avt').prop('files')[0] ? $('#Avt').prop('files')[0].name : "",
+                    Avt: $('#fileImage').prop('files')[0] ? $('#fileImage').prop('files')[0].name : "",
                     Gender: $('input[name="Gender"]:checked').val(),
                     Birthday: $("#Birthday").val(),
                     Address: $("#Address").val(),
@@ -282,6 +327,7 @@
                     Active: $('input[name="Active"]:checked').val(),
                 }
 
+                console.log(User)
                 if (formStatus == 'create') {
                     $.ajax({
                         type: "POST",
@@ -300,12 +346,14 @@
                     })
                 } else if (formStatus == 'edit') {
                     User.Id = $("#Id").val()
+                    if (User.Avt == "") {
+                        User.Avt == $("#Avt").val()
+                    }
+                    console.log(User)
                     $.ajax({
                         type: "POST",
                         url: "/Admin/Account/AdminUsersEdit",
-                        contentType: false,
-                        processData: false,
-                        data: { user: formData },
+                        data: { user: User },
                         success: function (res) {
                             if (res.statusCode == 200) {
                                 LoadData()
@@ -320,18 +368,15 @@
             }
         })
 
-        //$("#btnSave").click(function () {
-
-        //})
-
         function UploadImage() {
             var fileUpload = $("#Avt").get(0);
-            var file = fileUpload.files[0];
+            var file = fileUpload.files;
             var formData = new FormData();
             if (file != null) {
                 formData.append("image", file);
+                console.log("into ")
             }
-            
+
             $.ajax({
                 type: "POST",
                 url: "/Admin/Account/UploadImage",
@@ -364,11 +409,10 @@
             $("#Password").val("")
             $("#Phone").val("")
             $("#Email").val("")
-            $("#Avt").val("")
+            $("#Avt").hide()
             $("#Gender").val("")
             $("#Birthday").val("")
             $("#Address").val("")
-            $("#Company").val("")
         }
 
     </script>

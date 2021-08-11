@@ -24,14 +24,15 @@ namespace DataAccessLayer.Models.Entities
         [DisplayName("Phone")]
         [RegularExpression("^[0-9]{10}", ErrorMessage = "Please enter the correct format, for example: 0935444999!")]
         public string Phone { get; set; }
-        [RegularExpression("/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/", ErrorMessage = "Please enter the correct format, for example: demo@gmail.com!")]
+        [Required(ErrorMessage = "Please enter your email!")]
+        [RegularExpression("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", ErrorMessage = "Please enter the correct format, for example: demo@gmail.com!")]
         public string Email { get; set; }
         [DisplayName("Avatar")]
         public string Avt { get; set; }
         public bool Gender { get; set; }
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Please enter your birthday!")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}")]
         public DateTime Birthday { get; set; }
         [DisplayName("Address")]
         [Required(ErrorMessage = "Please enter your address!")]

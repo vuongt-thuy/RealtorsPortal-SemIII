@@ -10,7 +10,8 @@ namespace BusinessLogicLayer.Respositories
     interface IRespository<T>
     {
         IEnumerable<T> GetAll();
-        IEnumerable<T> Get(Expression<Func<T, bool>> predicate);
+        T GetOne(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> GetList(Expression<Func<T, bool>> predicate);
         T FindById(object id);
         bool Create(T t);
         T SaveObject(T t);
