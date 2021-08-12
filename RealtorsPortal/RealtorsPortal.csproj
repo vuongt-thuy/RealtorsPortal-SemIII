@@ -134,6 +134,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
     <Compile Include="Areas\Admin\Controllers\TradeController.cs" />
     <Compile Include="Areas\Admin\Utils\CustomeAuthenticationAttribute.cs" />
     <Compile Include="Areas\UserBackend\Controllers\ArticleController.cs" />
@@ -192,6 +193,10 @@
     <Content Include="Areas\UserBackend\Views\Article\Edit.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Areas\Admin\Views\Statistic\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\User.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\Payment.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\Ads.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
