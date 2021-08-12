@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealtorsPortal.Areas.UserBackend.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace RealtorsPortal.Areas.UserBackend.Controllers
 {
+    [CustomeAuthentication]
     public class ArticleController : Controller
     {
         // GET: UserBackend/Article

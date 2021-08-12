@@ -16,12 +16,6 @@ namespace DataAccessLayer.Models.DataContext
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>("RealtorsPortalContext"));
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<aspnet_UsersInRoles>().HasMany(i => i.Users).WithRequired().WillCascadeOnDelete(false);
-        }
-
         public virtual DbSet<Ads> Ads { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<City> City { get; set; }
@@ -30,7 +24,6 @@ namespace DataAccessLayer.Models.DataContext
         public virtual DbSet<District> District { get; set; }
         public virtual DbSet<Package> Package { get; set; }
         public virtual DbSet<PackageOfUser> PackageOfUser { get; set; }
-        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }

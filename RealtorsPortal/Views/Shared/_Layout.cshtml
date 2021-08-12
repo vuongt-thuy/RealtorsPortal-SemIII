@@ -120,26 +120,40 @@
                                     <div class="ltn__main-menu">
                                         <ul>
                                             <li>
-                                                <a href="#">Home</a>
+                                                <a href="@Url.Action("Index", "Home")">Home</a>
                                             </li>
                                             <li>
-                                                <a href="#">About</a>
+                                                <a href="@Url.Action("Index", "Sell")">Sell</a>
                                             </li>
                                             <li>
-                                                <a href="#">Shop</a>
+                                                <a href="@Url.Action("Index", "Rent")">Rent</a>
                                             </li>
-                                            <li class="menu-icon">
-                                                <a href="#">News</a>
-                                                <ul>
-                                                    <li><a href="blog.html">News</a></li>
-                                                    <li><a href="blog-grid.html">News Grid</a></li>
-                                                    <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                                                    <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                                                    <li><a href="blog-details.html">News details</a></li>
-                                                </ul>
+                                            <li>
+                                                <a href="@Url.Action("Index", "FAQ")">FAQ+</a>
                                             </li>
-                                            <li><a href="/Article/Create">Post Article</a></li>
-                                            <li><a href="/Article/Create">Login</a></li>
+                                            <li>
+                                                <a href="@Url.Action("Index", "Contact")">Contact</a>
+                                            </li>
+                                            <li><a href="/Article/Create"><i class="fa fa-plus" style="margin-right: 7px;"></i>Post Article</a></li>
+                                            @{
+                                                DataAccessLayer.Models.Entities.User user = (DataAccessLayer.Models.Entities.User)Session["user"];
+                                                if (user == null)
+                                                {
+                                                    <li><a href="/Login">Login</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="menu-icon">
+                                                        <a href="#">@user.Username</a>
+                                                        <ul>
+                                                            <li><a href="@Url.Action()">Manage Profile</a></li>
+                                                            <li><a href="@Url.Action("")">Manage Transactions</a></li>
+                                                            <li><a href="@Url.Action("")">Manage Articles</a></li>
+                                                            <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            }
                                         </ul>
                                     </div>
                                 </nav>
@@ -150,6 +164,7 @@
             </div>
             <!-- ltn__header-middle-area end -->
         </header>
+        @RenderSection("breadcrumb", required: false)
         <!-- HEADER AREA END -->
         <div class="container">
             @RenderBody()

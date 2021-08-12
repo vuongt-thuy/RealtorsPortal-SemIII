@@ -63,11 +63,11 @@
     <Compile Include="Models\Entities\Package.cs" />
     <Compile Include="Models\Entities\PackageOfUser.cs" />
     <Compile Include="Models\Entities\ResponeJSON.cs" />
-    <Compile Include="Models\Entities\Street.cs" />
     <Compile Include="Models\Entities\Transaction.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserRole.cs" />
     <Compile Include="Models\Entities\Ward.cs" />
+    <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

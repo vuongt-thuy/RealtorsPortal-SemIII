@@ -1,0 +1,80 @@
+﻿@model DataAccessLayer.Models.ViewModel.UserViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section breadcrumb {
+    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bg="img/bg/14.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner">
+                        <h1 class="page-title">Account</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                <li>Register</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- LOGIN AREA START (Register) -->
+<div class="ltn__login-area pb-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title-area text-center">
+                    <h1 class="section-title">Register <br>Your Account</h1>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
+                        Sit aliquid,  Non distinctio vel iste.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="account-login-inner">
+                    <form action="@Url.Action("Register", "Account")" method="post" class="ltn__form-box contact-form-box">
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { placeholder = "Fullname*" } })
+
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { placeholder = "Username*" } })
+
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Phone*" } })
+
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email*" } })
+
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password*" } })
+
+                        @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { placeholder = "RePassword*" } })
+
+                        <div class="btn-wrapper">
+                            <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
+                        </div>
+                    </form>
+                    <div class="by-agree text-center">
+                        <p>By creating an account, you agree to our:</p>
+                        <p><a href="#">TERMS OF CONDITIONS  &nbsp; &nbsp; | &nbsp; &nbsp;  PRIVACY POLICY</a></p>
+                        <div class="go-to-btn mt-50">
+                            <a href="login.html">ALREADY HAVE AN ACCOUNT ?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LOGIN AREA END -->

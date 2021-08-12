@@ -76,10 +76,14 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Avt)
                                 @Html.Editor("fileImage", new { htmlAttributes = new { type = "file" } })
+                                <img src="#" name="Avt" id="Avt" width="200" height="250" />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="#" name="Avt" id="Avt" width="200" height="250" />
+                            <div class="form-group">
+                                <label for="inputName">Fullname</label>
+                                @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -272,6 +276,7 @@
                     var user = res.data
                     $("#Id").val(user.Id)
                     $("#Username").val(user.Username)
+                    $("#Fullname").val(user.Fullname)
                     $("#Phone").val(user.Phone)
                     $("#Email").val(user.Email)
                     $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
@@ -315,6 +320,7 @@
                 var User = {
                     Id: $("#Id").val(),
                     Username: $("#Username").val(),
+                    Fullname: $("#Fullname").val(),
                     Password: $("#Password").val(),
                     Phone: $("#Phone").val(),
                     Email: $("#Email").val(),
@@ -406,6 +412,7 @@
             formStatus = 'create'
             $("#modalTitle").html("Add New Admin User")
             $("#Username").val("")
+            $("#Fullname").val("")
             $("#Password").val("")
             $("#Phone").val("")
             $("#Email").val("")

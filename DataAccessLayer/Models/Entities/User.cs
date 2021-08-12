@@ -18,6 +18,9 @@ namespace DataAccessLayer.Models.Entities
         [DisplayName("Username")]
         [Required(ErrorMessage = "Please enter your username!")]
         public string Username { get; set; }
+
+        [Required(ErrorMessage = "Please enter your fullname!")]
+        public string Fullname { get; set; }
         [DisplayName("Password")]
         [Required(ErrorMessage = "Please enter your password!")]
         public string Password { get; set; }
@@ -30,14 +33,11 @@ namespace DataAccessLayer.Models.Entities
         [DisplayName("Avatar")]
         public string Avt { get; set; }
         public bool Gender { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Please enter your birthday!")]
-        //[DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}")]
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         [DisplayName("Address")]
-        [Required(ErrorMessage = "Please enter your address!")]
         public string Address { get; set; }
         public string Company { get; set; }
+        [Required]
         [DisplayName("Role")]
         public int RoleId { get; set; }
         public bool Active { get; set; }
