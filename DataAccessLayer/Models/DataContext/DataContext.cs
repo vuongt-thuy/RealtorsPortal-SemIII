@@ -30,7 +30,6 @@ namespace DataAccessLayer.Models.DataContext
         public virtual DbSet<District> District { get; set; }
         public virtual DbSet<Package> Package { get; set; }
         public virtual DbSet<PackageOfUser> PackageOfUser { get; set; }
-        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }

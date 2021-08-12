@@ -15,7 +15,6 @@ namespace DataAccessLayer.Models.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
-        public int StreetId { get; set; }
         public string DetailAddress { get; set; }
         public int LandArea { get; set; }
         public double Price { get; set; }
@@ -31,15 +30,16 @@ namespace DataAccessLayer.Models.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        public int WardId { get; set; }
+
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
         [ForeignKey("PackageId")]
         public virtual Package Package { get; set; }
 
-        //[ForeignKey("StreetId")]
-        //public virtual Street Street { get; set; }
-        //public ICollection<Contact> Contacts { get; set; }
+        [ForeignKey("WardId")]
+        public virtual Ward Ward { get; set; }
 
         public ICollection<Contact> Contacts { get; set; }
     }
