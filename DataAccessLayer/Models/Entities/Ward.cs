@@ -18,6 +18,7 @@ namespace DataAccessLayer.Models.Entities
 
         [ForeignKey("DistrictId")]
         public virtual District District { get; set; }
-        //public ICollection<Ads> Ads { get; set; }
+
+        public ICollection<Ads> Ads { get; set; }
     }
 }
