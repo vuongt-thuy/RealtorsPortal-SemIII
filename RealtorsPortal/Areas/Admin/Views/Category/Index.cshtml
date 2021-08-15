@@ -9,3 +9,256 @@
 @section breadcrumb { Category Management }
 
 
+
+@model DataAccessLayer.Models.Entities.Category
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add Category
+        </button>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-body" style="display: block;">
+                <table id="tblCategories" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>NO.</th>
+                            <th>Name</th>
+                            <th>Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Add New Category</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/" method="post" id="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.Id)
+                      
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>                                                                         
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Active)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="true" checked id="radio2">
+                                    <label class="form-check-label" for="radio2">On</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="false" id="radio1">
+                                    <label class="form-check-label" for="radio1">Off</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script>
+        $(function () {
+            LoadData();
+        });
+
+        var formStatus = 'create'
+
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
+
+        function LoadData() {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Category/LoadCategories",
+                success: function (res) {
+                    var data = []
+                    for (var i = 0; i < res.length; i++) {
+                        data[i] = {
+                            "No": i + 1,
+                            "Name": res[i].Name,
+                            "Active": res[i].Active ? "<span class='badge bg-primary'>Active</span>" : "<span class='badge bg-warning'>Deactivate</span>",
+                            "Action":
+                                "<a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
+                        }
+                    }
+                    $('#tblCategories').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'No' },
+                            { data: 'Name' },
+                            { data: 'Active' },
+                            { data: 'Action' },
+                        ],
+                        "bDestroy": true
+                    });
+                }
+            })
+        }
+
+        $(document).on("click", "#btnDelete", function () {
+            var confirmation = confirm("Do you want delete this category?");
+
+            if (confirmation) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/Category/AdminCategoriesDelete",
+                    data: { id: $(this).data("id") },
+                    success: function (res) {
+                        LoadData()
+                        console.log(res.msg)
+                        toastr.success(res.msg)
+                    }
+                })
+            }
+        })
+
+        $(document).on("click", "#btnEdit", function () {
+            formStatus = 'edit'
+            $("#modalTitle").html("Edit Category")
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Category/Get",
+                data: { id: $(this).data("id") },
+                success: function (res) {
+                    var category = res.data
+                    $("#Id").val(category.Id)
+                    $("#Name").val(category.Name)
+                    $("input[name=Active][value=" + category.Active + "]").prop('checked', true);   
+                }
+            })
+            ShowModal()
+        })
+
+        var formValidate = $("#form").validate({
+            submitHandler: function () {
+                event.preventDefault()
+                var Category = {
+                    Id: $("#Id").val(),
+                    Name: $("#Name").val(),
+                    Active: $('input[name="Active"]:checked').val(),
+                }
+
+                console.log(Category)
+                if (formStatus == 'create') {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Category/AdminCategoriesCreate",
+                        data: { category: Category },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                } else if (formStatus == 'edit') {
+                    Category.Id = $("#Id").val()
+                 
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Category/AdminCategoriesEdit",
+                        data: { category: Category },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+
+        function CloseModal() {
+            $('#modal').modal('hide');
+        }
+
+        function ShowModal() {
+            $('#modal').modal('show');
+        }
+
+        $('#modal').on('hidden.bs.modal', function () {
+            ClearValue()
+        })
+
+        function ClearValue() {
+            formStatus = 'create'
+            $("#modalTitle").html("Add New Category")
+            $("#Name").val("")
+        }
+
+    </script>
+}
+
