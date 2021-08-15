@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "MortgageCalculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section breadcrumb {
+    <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner">
+                        <h1 class="page-title">Calculator</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                <li>Mortgage Calculator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container" style="margin-bottom: 80px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ltn__form-box">
+                <h4 class="title-2">Mortgage Calculator</h4>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-item">
+                                <h6>Loan amount</h6>
+                                <input type="text" name="currency-field" id="loanAmount" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+                            </div>
+                            <div class="input-item">
+                                <h6>Interest Rate Year(%)</h6>
+                                <input type="text" name="rateInterest" id="rateInterest" placeholder="Enter Interest Rate">
+                            </div>
+                            <div class="input-item">
+                                <h6>Loan Term (Year)</h6>
+                                <input type="text" name="loanTerm" id="loanTerm" placeholder="Enter Loan Term">
+                            </div>
+                        </div>
+                        <div class="offset-md-1 col-md-5">
+                            <div class="widget-2 ltn__menu-widget ltn__menu-widget-2 text-uppercase">
+                                <ul>
+                                    <li><a href="javascript:void(0)">Total Monthly Payment: <label id="total-monthly-payment">0</label>$</a></li>
+                                    <li><a href="javascript:void(0)">Total Interest Paid: <label id="total-interest-paid">0</label>$</a></li>
+                                    <li><a href="javascript:void(0)">Total Initial Money And Interest: <label id="total-initial-money-and-interest">0</label>$</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrapper mt-0 pull-left">
+                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="button" onclick="calculate()">Calculate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-12" id="tabledata">
+            <table class="table" style="margin-top: 70px;">
+                <thead>
+                <th>MONTH</th>
+                <th>PAYMENT</th>
+                <th>INTEREST</th>
+                <th>BALANCE</th>
+                </thead>
+                <tbody id="content">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+
+        $(function () {
+            $("#tabledata").hide()
+        })
+
+        $("input[data-type='currency']").on({
+            keyup: function () {
+                formatCurrency($(this));
+            },
+            blur: function () {
+                formatCurrency($(this), "blur");
+            }
+        });
+
+
+        function formatNumber(n) {
+            // format number 1000000 to 1,234,567
+            return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }
+
+
+        function formatCurrency(input, blur) {
+            // appends $ to value, validates decimal side
+            // and puts cursor back in right position.
+
+            // get input value
+            var input_val = input.val();
+
+            // don't validate empty input
+            if (input_val === "") { return; }
+
+            // original length
+            var original_len = input_val.length;
+
+            // initial caret position
+            var caret_pos = input.prop("selectionStart");
+
+            // check for decimal
+            if (input_val.indexOf(".") >= 0) {
+
+                // get position of first decimal
+                // this prevents multiple decimals from
+                // being entered
+                var decimal_pos = input_val.indexOf(".");
+
+                // split number by decimal point
+                var left_side = input_val.substring(0, decimal_pos);
+                var right_side = input_val.substring(decimal_pos);
+
+                // add commas to left side of number
+                left_side = formatNumber(left_side);
+
+                // validate right side
+                right_side = formatNumber(right_side);
+
+                // On blur make sure 2 numbers after decimal
+                if (blur === "blur") {
+                    right_side += "00";
+                }
+
+                // Limit decimal to only 2 digits
+                right_side = right_side.substring(0, 2);
+
+                // join number by .
+                input_val = "$" + left_side + "." + right_side;
+
+            } else {
+                // no decimal entered
+                // add commas to number
+                // remove all non-digits
+                input_val = formatNumber(input_val);
+                input_val = "$" + input_val;
+            }
+
+            // send updated string to input
+            input.val(input_val);
+
+            // put caret back in the right position
+            var updated_len = input_val.length;
+            caret_pos = updated_len - original_len + caret_pos;
+            input[0].setSelectionRange(caret_pos, caret_pos);
+        }
+
+        function calculate() {
+            var currencyloanAmount = $("#loanAmount").val().substring(1)
+            var loanAmount = currencyloanAmount.replaceAll(",", "")
+            var rateInterest = $("#rateInterest").val()
+            var loanTerm = $("#loanTerm").val()
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/Calculator",
+                data: { loanAmount: parseFloat(loanAmount), rateInterest: parseFloat(rateInterest), loanTerm: parseFloat(loanTerm) },
+                success: function (res) {
+
+                    var data = res.data
+                    var html = ''
+
+                    for (var i = 0; i < loanTerm * 12; i++) {
+                        html += '<tr>'
+                        html += '<td>' + (i + 1) + '</td>'
+                        html += '<td>' + FormatNumber(data[i].Payment) + '</td>'
+                        html += '<td>' + FormatNumber(data[i].Interest) + '</td>'
+                        html += '<td>' + FormatNumber(data[i].Balance) + '</td>'
+                        html += '</tr>'
+                    }
+                    $("#content").html(html)
+                    $("#tabledata").show()
+
+                    $("#total-monthly-payment").text(FormatNumber(res.totalMonthlyPaid))
+                    $("#total-interest-paid").text(FormatNumber(res.totalInterest))
+                    $("#total-initial-money-and-interest").text(FormatNumber(res.totalInitalMoneyAndInterest))
+                }
+            })
+        }
+
+        function FormatNumber(number) {
+            var locales = 'en-US';
+            var opts = { minimumFractionDigits: 2 };
+            return number.toLocaleString(locales, opts);
+        }
+    </script>
+}

@@ -72,6 +72,7 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\DataAccessLayer.dll.config
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\EntityFramework.SqlServer.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Newtonsoft.Json.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Helpers.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Mvc.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.Optimization.xml
@@ -79,7 +80,6 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.WebPages.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.WebPages.Deployment.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\System.Web.WebPages.Razor.xml
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Newtonsoft.Json.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Antlr3.Runtime.pdb
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\RealtorsPortal\obj\Debug\RealtorsPortal.csprojAssemblyReference.cache

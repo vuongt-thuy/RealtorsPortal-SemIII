@@ -83,7 +83,7 @@
                                         <li>
                                             <!-- header-top-btn -->
                                             <div class="header-top-btn">
-                                                <a href="add-listing.html">Add Listing</a>
+                                                <a href="@Url.Action("Calculator", "Home")">Mortgage calculator</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -146,9 +146,9 @@
                                                     <li class="menu-icon">
                                                         <a href="#">@user.Username</a>
                                                         <ul>
-                                                            <li><a href="@Url.Action()">Manage Profile</a></li>
-                                                            <li><a href="@Url.Action("")">Manage Transactions</a></li>
-                                                            <li><a href="@Url.Action("")">Manage Articles</a></li>
+                                                            <li><a href="/UserBackend/User/Information">Manage Profile</a></li>
+                                                            <li><a href="UserBackend/Transaction/History">Manage History Transactions</a></li>
+                                                            <li><a href="/UserBackend/Article/All">Manage Articles</a></li>
                                                             <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
                                                         </ul>
                                                     </li>
@@ -165,10 +165,12 @@
             <!-- ltn__header-middle-area end -->
         </header>
         @RenderSection("breadcrumb", required: false)
+        @RenderSection("container_out", required: false)
         <!-- HEADER AREA END -->
         <div class="container">
             @RenderBody()
         </div>
+        @RenderSection("section_container_fuild", required: false)
         <!-- BRAND LOGO AREA START -->
         <div class="ltn__brand-logo-area ltn__brand-logo-1 section-bg-1 pt-290 pb-110 plr--9 d-none">
             <div class="container-fluid">

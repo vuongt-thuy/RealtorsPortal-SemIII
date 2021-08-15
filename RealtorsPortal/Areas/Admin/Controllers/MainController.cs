@@ -21,9 +21,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         // GET: Admin/Main
         public ActionResult Login()
         {
-            if (Response.Cookies["admin"].Value == null)
-            //if(Session["admin"] != null)
-            {
+            if (Session["admin"] == null)
+                {
                 return View();
             }
             else
@@ -35,13 +34,10 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            var user = resUser.GetOne(x => x.Email.Equals(email) && x.Password.Equals(password) && x.RoleId == SystemConstant.ADMIN);
+            var user = resUser.GetOne(x => x.Email.Equals(email) && x.Password.Equals(password) && x.RoleId == SystemConstant.ADMIN && x.Active == true);
             if (user != null)
             {
-                Response.Cookies["admin"].Value = user.Username;
-                Response.Cookies["user"].Expires = DateTime.Now.AddMinutes(10000000);
-                //Session["admin"] = user;
-
+                Session["admin"] = user;
                 return RedirectToAction("Index", "Dashboard");
             }
             ViewBag.msg = "Incorrect account or password!";
@@ -51,8 +47,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult Logout()
         {
-            HttpContext.Session.Clear();
-            //Session["admin"] = null;
+            Session["admin"] = null;
             return RedirectToAction("Login");
         }
 

@@ -12,10 +12,16 @@ namespace DataAccessLayer.Models.Entities
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Please enter your name!")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Please enter your email!")]
         public string Email { get; set; }
-        public string Content { get; set; }
-        public int AdsId { get; set; }
+        [Required(ErrorMessage = "Please enter your phone!")]
+        public string Phone { get; set; }
+        [Required(ErrorMessage = "Please enter your message!")]
+        public string Message { get; set; }
+        public int? AdsId { get; set; }
+        public bool Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         [ForeignKey("AdsId")]

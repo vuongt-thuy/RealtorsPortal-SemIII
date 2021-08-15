@@ -12,14 +12,10 @@ namespace RealtorsPortal.Areas.Admin.Utils
         public override void OnActionExecuting(ActionExecutingContext filterContext)
 
         {
-            if (filterContext.HttpContext.Request.Cookies.AllKeys.Contains("admin") && filterContext.HttpContext.Request.Cookies["admin"].Value != "")
+            if (filterContext.HttpContext.Session["admin"] != null)
             {
                 return;
             }
-            //if (filterContext.HttpContext.Session["admin"] != null)
-            //{
-            //    return;
-            //}
             filterContext.Result = new RedirectToRouteResult(
                                    new RouteValueDictionary
                                    {

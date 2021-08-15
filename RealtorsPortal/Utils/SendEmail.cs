@@ -9,7 +9,7 @@ namespace RealtorsPortal.Utils
 {
     public static class SendEmail
     {
-        public static void Send (string receiver, string subject, string message)
+        public static void Notification (string receiver, string subject, string message)
         {
             try
             {
@@ -44,5 +44,6 @@ namespace RealtorsPortal.Utils
                 
             }
         }
+
     }
 }

@@ -67,6 +67,8 @@
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserRole.cs" />
     <Compile Include="Models\Entities\Ward.cs" />
+    <Compile Include="Models\ViewModel\DataPoint.cs" />
+    <Compile Include="Models\ViewModel\MortgageCalculator.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

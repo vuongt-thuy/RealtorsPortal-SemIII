@@ -106,7 +106,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Birthday)
-                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @id = "Birthday" } })
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control"} })
                                 
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="role">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.RoleId)
                                 @Html.DropDownListFor(model => model.RoleId, new SelectList(ViewBag.Roles, "Id", "Name"), new { @class = "form-control" })
@@ -188,6 +188,7 @@
         $(function () {
             LoadData();
             $("#Avt").hide();
+            $("#role").hide()
         });
 
         var formStatus = 'create'
@@ -254,7 +255,7 @@
             if (confirmation) {
                 $.ajax({
                     type: "GET",
-                    url: "/Admin/Account/AdminUsersDelete",
+                    url: "/Admin/Account/Delete",
                     data: { id: $(this).data("id") },
                     success: function (res) {
                         LoadData()
@@ -268,6 +269,7 @@
         $(document).on("click", "#btnEdit", function () {
             formStatus = 'edit'
             $("#modalTitle").html("Edit Admin User")
+            $("#role").show()
             $.ajax({
                 type: "GET",
                 url: "/Admin/Account/Get",
@@ -288,7 +290,6 @@
                     $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
 
 
-                    console.log(user.Birthday)
 
                     function join(t, a, s) {
                         function format(m) {
@@ -307,8 +308,6 @@
                         $("#Avt").show()
                         $('#Avt').attr("src", user.Avt);
                     }
-
-                    console.log(user)
                 }
             })
             ShowModal()
@@ -324,16 +323,16 @@
                     Password: $("#Password").val(),
                     Phone: $("#Phone").val(),
                     Email: $("#Email").val(),
-                    Avt: $('#fileImage').prop('files')[0] ? $('#fileImage').prop('files')[0].name : "",
+                    Avt: $('#fileImage').prop('files')[0] ? '/Users/' + $('#fileImage').prop('files')[0].name : $('#Avt').attr('src'),
                     Gender: $('input[name="Gender"]:checked').val(),
                     Birthday: $("#Birthday").val(),
                     Address: $("#Address").val(),
                     Company: $("#Company").val(),
-                    RoleId: $("select#RoleId option").filter(":selected").val(),
+                    RoleId: 1,
                     Active: $('input[name="Active"]:checked').val(),
                 }
 
-                console.log(User)
+                console.log($('#fileImage').attr('src'))
                 if (formStatus == 'create') {
                     $.ajax({
                         type: "POST",
@@ -352,6 +351,8 @@
                     })
                 } else if (formStatus == 'edit') {
                     User.Id = $("#Id").val()
+                    User.RoleId = $("select#RoleId option").filter(":selected").val()
+
                     if (User.Avt == "") {
                         User.Avt == $("#Avt").val()
                     }
@@ -362,6 +363,7 @@
                         data: { user: User },
                         success: function (res) {
                             if (res.statusCode == 200) {
+                                UploadImage()
                                 LoadData()
                                 CloseModal()
                                 toastr.success(res.msg)
@@ -375,8 +377,7 @@
         })
 
         function UploadImage() {
-            var fileUpload = $("#Avt").get(0);
-            var file = fileUpload.files;
+            var file = $("#fileImage")[0].files[0];
             var formData = new FormData();
             if (file != null) {
                 formData.append("image", file);
@@ -417,6 +418,8 @@
             $("#Phone").val("")
             $("#Email").val("")
             $("#Avt").hide()
+            $('#Avt').attr('src', '');
+            $('#fileImage').val('');
             $("#Gender").val("")
             $("#Birthday").val("")
             $("#Address").val("")

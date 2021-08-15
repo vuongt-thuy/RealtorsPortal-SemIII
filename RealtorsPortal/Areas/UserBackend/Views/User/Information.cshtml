@@ -1,7 +1,16 @@
-﻿
+﻿@model DataAccessLayer.Models.Entities.User
 @{
     ViewBag.Title = "Information";
     Layout = "~/Areas/UserBackend/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <style>
+        .error {
+            color: red
+        }
+    </style>
 }
 
 @section page_title { Profile}
@@ -14,14 +23,15 @@
                 <h3 class="card-title">Change Profile</h3>
             </div>
             <div class="card-body">
-                <form>
+                <form action="/" method="" id="form">
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-2">
                                 <label style="font-weight: bold">Avatar</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="file" name="name" value="" />
+                                <input type="file" name="fileImage" id="fileImage" value="" />
+                                <img src="" id="Avt" name="Avt" alt="Alternate Text" width="200" height="250" />
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
@@ -29,8 +39,11 @@
                                 <label style="font-weight: bold">Type of User</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="select2-single form-control select2-hidden-accessible" style="width: 50%">
-                                    <option value="value">Select Options</option>
+                                <select id="RoleId" class="select2-single form-control select2-hidden-accessible" style="width: 50%">
+                                    @foreach (var item in ViewBag.role)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -40,62 +53,62 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline1">Female</label>
+                                    <input type="radio" id="Female" name="Gender" value="false" class="custom-control-input">
+                                    <label class="custom-control-label" for="Female">Female</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline2">Male</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline3">Other</label>
+                                    <input type="radio" id="Male" name="Gender" value="true" class="custom-control-input">
+                                    <label class="custom-control-label" for="Male">Male</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top:20px;">
+                        <div class="row" style="margin-top:20px; margin-bottom: 50px;">
                             <div class="col-md-2">
                                 <label style="font-weight: bold">Detail Information</label>
                             </div>
                             <div class="col-md-3">
                                 <label class="card-subtitle">Fullname</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-user-o"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                                </div>
+                                <input type="text" class="form-control" id="Fullname" name="Fullname">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Username</label>
+                                <input type="text" class="form-control" id="Username" name="Username">
+
                             </div>
                             <div class="col-md-3">
                                 <label class="card-subtitle">Email</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-envelope-o"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                                </div>
+                                <input type="text" class="form-control" id="Email" name="Email">
+
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px; margin-bottom: 50px;">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Birthday</label>
+                                <input type="date" class="form-control" id="Birthday" name="Birthday" aria-describedby="basic-addon3">
+
                             </div>
                             <div class="col-md-3">
                                 <label class="card-subtitle">Phone Number</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-phone"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                                </div>
+                                <input type="text" class="form-control" id="Phone" name="Phone" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Address</label>
+                                <input type="text" class="form-control" id="Address" name="Address" aria-describedby="basic-addon3">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2">
                             </div>
                             <div class="col-md-3">
-                                <label class="card-subtitle">Address</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-map-marker"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                                </div>
+                                <label class="card-subtitle">Company</label>
+                                <input type="text" class="form-control" id="Company" name="Company" aria-describedby="basic-addon3">
+
+                            </div>
+                            <div class="col-md-3">
+                                <label class="card-subtitle">Password</label>
+                                <input type="password" class="form-control" id="Password" name="Password" aria-describedby="basic-addon3">
                             </div>
                         </div>
                     </div>
@@ -110,3 +123,122 @@
     </div>
     <!-- End col -->
 </div>
+
+@section scripts {
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        var userId = 0
+        var userRole = 0
+
+        $(function () {
+            GetCurrentUser()
+        })
+
+        function GetCurrentUser() {
+            $.ajax({
+                type: "GET",
+                url: "/User/GetCurrentUser",
+                success: function (res) {
+                    var user = res.data
+                    userId = user.Id
+                    userRole = user.RoleId
+
+                    $("#Fullname").val(user.Fullname)
+                    $("#Username").val(user.Username)
+                    $("#Phone").val(user.Phone)
+                    $("#Email").val(user.Email)
+                    $("#Address").val(user.Address)
+                    $("#Company").val(user.Company)
+                    $("#Birthday").val(user.Company)
+                    $("#Password").val(user.Password)
+                    if (user.Avt == null) {
+                        $("#Avt").hide()
+                    } else {
+                        $("#Avt").show();
+                        $("#Avt").attr("src", user.Avt);
+
+                    }
+                    $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
+                    $("#RoleId").val(user.RoleId).attr("selected", "selected")
+
+                }
+            })
+        }
+
+        var formValidate = $("#form").validate({
+            submitHandler: function () {
+                event.preventDefault()
+                var User = {
+                    Id: userId,
+                    Username: $("#Username").val(),
+                    Fullname: $("#Fullname").val(),
+                    Password: $("#Password").val(),
+                    Phone: $("#Phone").val(),
+                    Email: $("#Email").val(),
+                    Avt: $('#fileImage').prop('files')[0] ? 'Users/' + $('#fileImage').prop('files')[0].name : $('#Avt').attr('src'),
+                    Gender: $('input[name="Gender"]:checked').val(),
+                    Birthday: $("#Birthday").val(),
+                    Address: $("#Address").val(),
+                    Company: $("#Company").val(),
+                    RoleId: $("#RoleId option").filter(":selected").val(),
+                    Active: true,
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/User/UpdateProfile",
+                    data: { user: User },
+                    success: function (res) {
+                        if (res.statusCode == 200) {
+                            UploadImage()
+                            toastr.success(res.msg, "Success")
+                        } else if (res.statusCode == 201) {
+                            formValidate.showErrors(res.data)
+                        }
+                    }
+                })
+            }
+        })
+
+
+        $("#fileImage").change(function (e) {
+            productImg = $("#fileImage")[0].files[0]
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.getElementById("Avt");
+                img.alt = "Description Image";
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $("#fileImage").after($("#Avt").show())
+            }
+        })
+
+        function UploadImage() {
+            var file = $("#fileImage")[0].files[0];
+            var formData = new FormData();
+            if (file != null) {
+                formData.append("image", file);
+                console.log("into ")
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/User/UploadImage",
+                contentType: false,
+                processData: false,
+                enctype: 'multipart/form-data',
+                data: formData,
+                success: function (res) {
+
+                }
+            })
+        }
+    </script>
+} 

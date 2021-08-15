@@ -2,6 +2,7 @@
 using DataAccessLayer.Models.Entities;
 using RealtorsPortal.Areas.Admin.Utils;
 using RealtorsPortal.Controllers;
+using RealtorsPortal.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,11 +52,11 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!resUser.CheckDuplicate(x => x.Username.Equals(user.Username)))
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email)))
                 {
                     if (user.Avt != null)
                     {
-                        user.Avt = "/Uploads/Users/" + user.Avt;
+                        user.Avt = "/Uploads/" + user.Avt;
                     }
                     user.CreatedAt = DateTime.Now;
                     user.UpdatedAt = DateTime.Now;
@@ -72,7 +73,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
                 else
                 {
                     var error = new Dictionary<string, string>(){
-                        {"Username", "Username is duplicated!"},
+                        {"Email", "Email is duplicated!"},
                     };
                     return Json(new ResponeJSON<Dictionary<string, string>>
                     {
@@ -107,11 +108,11 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!resUser.CheckDuplicate(x => x.Username.Equals(user.Username) && x.Id != user.Id))
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email) && x.Id != user.Id))
                 {
                     if (user.Avt != null)
                     {
-                        user.Avt = "/Uploads/Users/" + user.Avt;
+                        user.Avt = "/Uploads/" + user.Avt;
                     }
                     user.CreatedAt = DateTime.Now;
                     user.UpdatedAt = DateTime.Now;
@@ -128,7 +129,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
                 else
                 {
                     var error = new Dictionary<string, string>(){
-                        {"Username", "Username is duplicated!"},
+                        {"Email", "Email is duplicated!"},
                     };
                     return Json(new ResponeJSON<Dictionary<string, string>>
                     {
@@ -158,7 +159,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AdminUsersDelete(int id)
+        public JsonResult Delete(int id)
         {
             if (resUser.Delete(id))
             {
@@ -179,23 +180,387 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadAdminUsers()
         {
-            var data = resUser.GetAll().ToList();
-            return Json(resUser.GetAll(), JsonRequestBehavior.AllowGet);
+            return Json(resUser.GetList(x => x.RoleId == SystemConstant.ADMIN), JsonRequestBehavior.AllowGet);
         }
 
         // Private Sellers
 
         public ActionResult PrivateSellers()
         {
+            ViewBag.Roles = resUserRole.GetAll();
             return View("PrivateSellers/Index");
+        }
+
+        [HttpPost]
+        public ActionResult PrivateSellerCreate([Bind(Exclude = "Id")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email)))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Create(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Create Private Seller Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Private Seller Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Create Private Seller Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult PrivateSellerEdit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email) && x.Id != user.Id))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Update(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Update Private Seller Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Admin User Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Update Private Seller Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult LoadPrivateSellers()
+        {
+            return Json(resUser.GetList(x => x.RoleId == SystemConstant.PRIVATE_SELLER), JsonRequestBehavior.AllowGet);
         }
 
         // Agentss
 
         public ActionResult Agents()
         {
+            ViewBag.Roles = resUserRole.GetAll();
             return View("Agents/Index");
         }
+
+        [HttpPost]
+        public ActionResult AgentCreate([Bind(Exclude = "Id")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email)))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Create(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Create Agent Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Agent Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Create Agent Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult AgentEdit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email) && x.Id != user.Id))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Update(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Update Agent Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Agent Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Update Agent Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult LoadAgents()
+        {
+            return Json(resUser.GetList(x => x.RoleId == SystemConstant.AGENT), JsonRequestBehavior.AllowGet);
+        }
+
+
+        // Vistor
+        public ActionResult Vistors()
+        {
+            ViewBag.Roles = resUserRole.GetAll();
+            return View("Vistors/Index");
+        }
+
+        [HttpPost]
+        public ActionResult VistorCreate([Bind(Exclude = "Id")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email)))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Create(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Create Vistor Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Vistor Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Create Vistor Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult VistorEdit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!resUser.CheckDuplicate(x => x.Email.Equals(user.Email) && x.Id != user.Id))
+                {
+                    if (user.Avt != null)
+                    {
+                        user.Avt = "/Uploads/" + user.Avt;
+                    }
+                    user.CreatedAt = DateTime.Now;
+                    user.UpdatedAt = DateTime.Now;
+                    if (resUser.Update(user))
+                    {
+                        return Json(new ResponeJSON<User>
+                        {
+                            statusCode = 200,
+                            msg = "Update Vistor Successfully!",
+                            data = user
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    var error = new Dictionary<string, string>(){
+                        {"Email", "Email is duplicated!"},
+                    };
+                    return Json(new ResponeJSON<Dictionary<string, string>>
+                    {
+                        statusCode = 201,
+                        msg = "Create Vistor Fail!",
+                        data = error
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            Dictionary<string, string> errors = new Dictionary<string, string>();
+            foreach (var k in ModelState.Keys)
+            {
+                foreach (var err in ModelState[k].Errors)
+                {
+                    string key = Regex.Replace(k, @"(\w+)\.(\w+)", @"$2");
+                    if (!errors.ContainsKey(key))
+                    {
+                        errors.Add(key, err.ErrorMessage);
+                    }
+                }
+            }
+            return Json(new ResponeJSON<Dictionary<string, string>>
+            {
+                statusCode = 201,
+                msg = "Update Vistor Fail!",
+                data = errors
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult LoadVistors()
+        {
+            return Json(resUser.GetList(x => x.RoleId == SystemConstant.VISITOR), JsonRequestBehavior.AllowGet);
+        }
+
+
 
         [HttpPost]
         public bool UploadImage()
