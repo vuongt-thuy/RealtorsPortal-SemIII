@@ -82,6 +82,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
+
             Dictionary<string, string> errors = new Dictionary<string, string>();
             foreach (var k in ModelState.Keys)
             {
