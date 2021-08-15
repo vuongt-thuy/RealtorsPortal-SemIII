@@ -13,18 +13,23 @@
 
 <div class="row">
     <div class="col-md-3">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelCountry" style="width: 200px;">
+        <button type="button" class="btn btn-primary btn-modelCountry" data-toggle="modal" data-type="Country" data-target="#modelCountry" style="width: 200px;">
             <i class="fas fa-plus"></i>  Add New Country
         </button>
     </div>
     <div class="col-md-3">
-        <button type="button" class="btn" data-toggle="modal" data-target="#modelCity" style="background:#6c757d; width: 200px; color: white;">
+        <button type="button" class="btn btn-modelCity" data-toggle="modal" data-target="#modelCity" data-type="City" style="background:#6c757d; width: 200px; color: white;">
             <i class="fas fa-plus"></i>  Add New City
         </button>
     </div>
     <div class="col-md-3">
-        <button type="button" class="btn" data-toggle="modal" data-target="#modelDistrict" style="background:#17a2b8; width: 200px; color: white;">
+        <button type="button" class="btn btn-modelDistrict" data-toggle="modal" data-target="#modelDistrict" data-type="District" style="background:#17a2b8; width: 200px; color: white;">
             <i class="fas fa-plus"></i>  Add New District
+        </button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-modelWard" data-toggle="modal" data-target="#modelWard" data-type="Ward" style="background:#17a2b8; width: 200px; color: white;">
+            <i class="fas fa-plus"></i>  Add New Ward
         </button>
     </div>
 </div>
@@ -36,30 +41,12 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Result Type:</label>
-                            <select class="select2" style="width: 100%;">
-                                <option>Country</option>
-                                <option>City</option>
-                                <option>District</option>
+                            <select class="select2" id="type-area" style="width: 100%;">
+                                <option value="Country">Country</option>
+                                <option value="City">City</option>
+                                <option value="District">District</option>
+                                <option value="Ward">Ward</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label>Sort Order:</label>
-                            <select class="select2" style="width: 100%;">
-                                <option selected>ASC</option>
-                                <option>DESC</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group input-group-lg">
-                        <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-lg btn-default">
-                                <i class="fa fa-search"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -82,41 +69,16 @@
             </div>
 
             <div class="card-body" style="display: block;">
-                <table class="table table-bordered">
+                <table id="tblListArea" class="table table-bordered">
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Name</th>
-                            <th>Code</th>
-                            <th width="150">Status</th>
-                            <th width="115"></th>
+                            <th class="parent-area">Parent</th>
+                            <th width="150"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>Viet Nam</td>
-                            <td>
-                                VN
-                            </td>
-                            <td></td>
-                            <td>
-                                <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
-
-                <div class="clearfix" style="margin-top: 15px;">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                    </ul>
-                </div>
             </div>
             <!-- /.card-body -->
         </div>
@@ -127,7 +89,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add New Country</h5>
+                <h5 class="modal-title">Add New Country</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -136,20 +98,12 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="inputName">Name</label>
-                    <input type="text" id="name" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Status</label>
-                    <input type="text" id="code" class="form-control" value="">
+                    <input type="text" class="form-control name-area" data-type="Country" value="">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button"  class="btn btn-primary btn-add-new-area" data-type="Country">Save</button>
             </div>
         </div>
     </div>
@@ -159,7 +113,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add New City</h5>
+                <h5 class="modal-title">Add New City</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -168,20 +122,17 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="inputName">Name</label>
-                    <input type="text" id="name" class="form-control" value="">
+                    <input type="text" class="form-control name-area" data-type="City" value="">
                 </div>
                 <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Status</label>
-                    <input type="text" id="code" class="form-control" value="">
+                    <label>Country:</label>
+                    <select class="select2 select-country" style="width: 100%;">
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary btn-add-new-area" data-type="City">Save</button>
             </div>
         </div>
     </div>
@@ -191,7 +142,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add New District</h5>
+                <h5 class="modal-title">Add New District</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -200,29 +151,288 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="inputName">Name</label>
-                    <input type="text" id="name" class="form-control" value="">
+                    <input type="text" class="form-control name-area" data-type="District" value="">
                 </div>
                 <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Status</label>
-                    <input type="text" id="code" class="form-control" value="">
+                    <label>City:</label>
+                    <select class="select2 select-city" style="width: 100%;">
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button"  class="btn btn-primary btn-add-new-area" data-type="District">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modelWard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Ward</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control name-area" data-type="Ward" value="">
+                </div>
+                <div class="form-group">
+                    <label>District:</label>
+                    <select class="select2 select-district" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button"  class="btn btn-primary btn-add-new-area" data-type="Ward">Save</button>
             </div>
         </div>
     </div>
 </div>
 @section scripts {
     <script src="~/Areas/Content/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
     <script>
-        $(function () {
-            $('.select2').select2()
+
+        $(document).ready(function () {
+            loadArea();
+            let isUpdate = false;
+            let parentId = 0;
+            let typeArea = "None";
+
+            $(function () {
+                $('.select2').select2();
+            });
+
+            $('.btn-modelCountry').on('click', function () {
+                let type = $(this).data('type');
+                $(`.name-area[data-type=${type}]`).val("");
+                isUpdate = false;
+                $('#modelCountry').modal('show');
+            });
+
+            $('#modelCountry').on('show.bs.modal', function (e) {
+                
+            })
+
+            $('.btn-modelCity').on('click', function () {
+                let type = $(this).data('type');
+                $(`.name-area[data-type=${type}]`).val("");
+                isUpdate = false;
+                $('#modelCity').modal('show');
+            });
+            $('#modelCity').on('show.bs.modal', function (e) {
+                return $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '/Admin/Area/GetAllCountry',
+                    dataType: 'json',
+                    cache: false
+                }).done(function (data) {
+                    $('.select-country').html("");
+                    data.forEach(function (item) {
+                        let selected = "";
+                        if (typeArea == "City" && item.Id == parentId) {
+                            selected = "selected";
+                        }
+                        $('.select-country').append("<option value='" + item.Id + "' " + selected + " >" + item.Name + "</option>")
+                    })
+                });
+            })
+
+            $('.btn-modelDistrict').on('click', function () {
+                let type = $(this).data('type');
+                $(`.name-area[data-type=${type}]`).val("");
+                isUpdate = false;
+                $('#modelDistrict').modal('show');
+            });
+            $('#modelDistrict').on('show.bs.modal', function (e) {
+                return $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '/Admin/Area/GetAllCity',
+                    dataType: 'json',
+                    cache: false
+                }).done(function (data) {
+                    $('.select-city').html("");
+                    data.forEach(function (item) {
+                        let selected = "";
+                        if (typeArea == "District" && item.Id == parentId) {
+                            selected = "selected";
+                        }
+                        $('.select-city').append("<option value='" + item.Id + "' " + selected + " >" + item.Name + "</option>")
+                    })
+                });
+            })
+
+            $('.btn-modelWard').on('click', function () {
+                let type = $(this).data('type');
+                $(`.name-area[data-type=${type}]`).val("");
+                isUpdate = false;
+                $('#modelWard').modal('show');
+            });
+            $('#modelWard').on('show.bs.modal', function (e) {
+                if (typeArea == "Ward" && isUpdate == false) {
+                    $(`.name-area[data-type=${typeArea}]`).val("");
+                    isUpdate = false;
+                }
+                return $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '/Admin/Area/GetAllDistrict',
+                    dataType: 'json',
+                    cache: false
+                }).done(function (data) {
+                    $('.select-district').html("");
+                    data.forEach(function (item) {
+                        let selected = "";
+                        if (typeArea == "Ward" && item.Id == parentId) {
+                            selected = "selected";
+                        }
+                        $('.select-district').append("<option value='" + item.Id + "' " + selected + " >" + item.Name + "</option>")
+                    })
+                });
+            })
+
+            $(document).on('click', '.btn-add-new-area', function () {
+                let type = $(this).data('type');
+                let name = $(`.name-area[data-type=${type}]`).val();
+                let ajaxData = {
+                    Name: name
+                };
+                let ajaxUrl = "";
+
+                if (type == 'Country') {
+                    ajaxUrl = '/Admin/Area/CreateCountry';
+                } else if (type == 'City') {
+                    ajaxUrl = '/Admin/Area/CreateCity';
+                    let countryId = $('.select-country').val();
+                    ajaxData.CountryId = countryId;
+                } else if (type == 'District') {
+                    ajaxUrl = '/Admin/Area/CreateDistrict';
+                    let cityId = $('.select-city').val();
+                    ajaxData.CityId = cityId;
+                } else if (type == 'Ward') {
+                    ajaxUrl = '/Admin/Area/CreateWard';
+                    let districtId = $('.select-district').val();
+                    ajaxData.DistrictId = districtId;
+                }
+
+                if (isUpdate) {
+                    ajaxData.Id = idArea;
+                    ajaxUrl = ajaxUrl.replace("Create", "Update");
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: ajaxUrl,
+                    data: ajaxData,
+                    success: function (res) {
+                        if (res.statusCode == 200) {
+                            loadArea();
+                        } else if (res.statusCode == 201) {
+                            formValidate.showErrors(res.data)
+                        }
+                        isUpdate = false;
+                    }
+                });
+                $(this).parents('.modal').modal('hide');
+            });
+
+            $('#type-area').on('change', function () {
+                loadArea();
+            });
+
+            $(document).on('click', '.btn-delete-area', function () {
+                if (!confirm('Are you sure delete?')) e.preventDefault();
+                let type = $(this).data('type');
+                let id = $(this).data('id');
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: `/Admin/Area/Delete${type}ById/${id}`,
+                    dataType: 'json',
+                    cache: false
+                }).done(function (response) {
+                    loadArea();
+                });
+            });
+
+            $(document).on('click', '.btn-edit-area', function () {
+                let type = $(this).data('type');
+                let id = $(this).data('id');
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: `/Admin/Area/Get${type}ById/${id}`,
+                    dataType: 'json',
+                    cache: false
+                }).done(function (response) {
+                    $(`.name-area[data-type=${type}]`).val(response.data.Name);
+                    $('#model' + type).modal('show');
+                    isUpdate = true;
+                    parentId = response.data.Parent;
+                    typeArea = type;
+                    idArea = response.data.Id;
+                });
+            });
+
+            function loadArea() {
+                let typeArea = $('#type-area').val();
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '/Admin/Area/GetAll' + typeArea,
+                    dataType: 'json',
+                    cache: false
+                }).done(function (response) {
+                    let parentArea = $('.parent-area');
+                    if (typeArea == 'Country') {
+                        parentArea.text("");
+                    } else if (typeArea == 'City') {
+                        parentArea.text("Country");
+                    } else if (typeArea == 'District') {
+                        parentArea.text("City");
+                    } else if (typeArea == 'Ward') {
+                        parentArea.text("District");
+                    }
+                    var data = [];
+                    response.forEach(function (item, index) {
+                        data[index] = {
+                            "No": index + 1,
+                            "Name": item.Name,
+                            "Parent": item.Parent,
+                            "":
+                                `<a href="javascript:void(0)" class="btn btn-primary btn-edit-area" data-type="${typeArea}" data-id="${item.Id}"><i class="fas fa-edit"></i></a>
+                                <a href="javascript:void(0)" class="btn btn-danger btn-delete-area" data-type="${typeArea}" data-id="${item.Id}"><i class="fas fa-trash"></i></a>`
+                        }
+                    });
+                    $('#tblListArea').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'No' },
+                            { data: 'Name' },
+                            { data: 'Parent' },
+                            { data: '' },
+                        ],
+                        "bDestroy": true
+                    });
+                });
+            }
         });
+
     </script>
 }
