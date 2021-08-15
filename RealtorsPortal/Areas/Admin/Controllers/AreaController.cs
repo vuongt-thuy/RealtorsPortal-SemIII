@@ -41,18 +41,25 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             var data = countryRespository.GetAll().ToList();
             var result = data.Select(S => new {
                 Id = S.Id,
-                Name = S.Name
+                Name = S.Name,
+                Parent = ""
             });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCountryById(int id)
         {
-            return Json(new ResponeJSON<Country>
+            var country = countryRespository.FindById(id);
+            var result = new {
+                Id = country.Id,
+                Name = country.Name,
+                Parent = ""
+            };
+            return Json(new ResponeJSON<Object>
             {
                 statusCode = 200,
                 msg = "Successfully!",
-                data = countryRespository.FindById(id)
+                data = result
             }, JsonRequestBehavior.AllowGet); ;
         }
 
@@ -150,18 +157,26 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             var data = cityRespository.GetAll().ToList();
             var result = data.Select(S => new {
                 Id = S.Id,
-                Name = S.Name
+                Name = S.Name,
+                Parent = S.Country.Name
             });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCityById(int id)
         {
-            return Json(new ResponeJSON<City>
+            var city = cityRespository.FindById(id);
+            var result = new
+            {
+                Id = city.Id,
+                Name = city.Name,
+                Parent = city.Country.Id
+            };
+            return Json(new ResponeJSON<Object>
             {
                 statusCode = 200,
                 msg = "Successfully!",
-                data = cityRespository.FindById(id)
+                data = result
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -259,18 +274,26 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             var data = districtRespository.GetAll().ToList();
             var result = data.Select(S => new {
                 Id = S.Id,
-                Name = S.Name
+                Name = S.Name,
+                Parent = S.City.Name
             });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetDistrictById(int id)
         {
-            return Json(new ResponeJSON<District>
+            var district = districtRespository.FindById(id);
+            var result = new
+            {
+                Id = district.Id,
+                Name = district.Name,
+                Parent = district.City.Id
+            };
+            return Json(new ResponeJSON<Object>
             {
                 statusCode = 200,
                 msg = "Successfully!",
-                data = districtRespository.FindById(id)
+                data = result
             }, JsonRequestBehavior.AllowGet); ;
         }
 
@@ -368,18 +391,26 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             var data = wardRespository.GetAll().ToList();
             var result = data.Select(S => new {
                 Id = S.Id,
-                Name = S.Name
+                Name = S.Name,
+                Parent = S.District.Name
             });
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetWardById(int id)
         {
-            return Json(new ResponeJSON<Ward>
+            var ward = wardRespository.FindById(id);
+            var result = new
+            {
+                Id = ward.Id,
+                Name = ward.Name,
+                Parent = ward.District.Id
+            };
+            return Json(new ResponeJSON<Object>
             {
                 statusCode = 200,
                 msg = "Successfully!",
-                data = wardRespository.FindById(id)
+                data = result
             }, JsonRequestBehavior.AllowGet); ;
         }
 
