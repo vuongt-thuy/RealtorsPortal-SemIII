@@ -1,9 +1,8 @@
 ﻿namespace DataAccessLayer.Migrations
 {
+    using DataAccessLayer.Models.Entities;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DataAccessLayer.Models.DataContext.DataContext>
     {
@@ -20,6 +19,29 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            context.UserRole.AddOrUpdate(x => x.Id, new UserRole
+            {
+                Id = 1,
+                Name = "Admin",
+                Active = true
+            });
+            context.SaveChanges();
+            //DateTime localDate = DateTime.Now;
+            //context.User.AddOrUpdate(x => x.Id, new User
+            //{
+            //    Id = 1,
+            //    Username = "Admin",
+            //    Fullname = "Admin",
+            //    Password = "admin@gmail.com",
+            //    Email = "admin@gmail.com",
+            //    Gender = true,
+            //    RoleId = 1,
+            //    Active = true,
+            //    PaypalConfig = 1,
+            //    CreatedAt = localDate,
+            //    UpdatedAt = localDate,
+            //});
+            //context.SaveChanges();
         }
     }
 }

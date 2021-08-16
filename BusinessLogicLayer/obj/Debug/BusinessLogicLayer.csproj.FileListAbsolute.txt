@@ -1,3 +1,18 @@
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.AssemblyReference.cache
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb

@@ -1,3 +1,17 @@
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.v1.resources
+D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
@@ -5,6 +19,8 @@ E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.xml
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.v1.resources
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.GenerateResource.cache
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\DataAccessLayer\obj\Debug\DataAccessLayer.dll

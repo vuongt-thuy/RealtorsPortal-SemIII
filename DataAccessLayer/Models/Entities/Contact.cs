@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models.Entities
 {
+    [Table("Contact")]
     public class Contact
     {
         [Key]
