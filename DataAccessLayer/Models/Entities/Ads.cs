@@ -26,7 +26,8 @@ namespace DataAccessLayer.Models.Entities
         public int CategoryId { get; set; }
         public string Need { get; set; }
         public string UnitPrice { get; set; }
-        public bool Active { get; set; }
+        // approved/unapproved/unverified
+        public int Status{ get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
