@@ -268,6 +268,8 @@
 
         $(document).on("click", "#btnEdit", function () {
             formStatus = 'edit'
+
+            ClearErrors()
             $("#modalTitle").html("Edit Admin User")
             $("#role").show()
             $.ajax({
@@ -284,25 +286,10 @@
                     $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
                     $("#Address").val(user.Address)
                     $("#Password").val(user.Password)
-                    //$("#Birthday").val(user.Birthday)
+                    $("#Birthday").val(user.Birthday)
                     $("#Company").val(user.Company)
                     $("#RoleId").val(user.RoleId).attr("selected", "selected")
                     $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
-
-
-
-                    function join(t, a, s) {
-                        function format(m) {
-                            let f = new Intl.DateTimeFormat('en', m);
-                            return f.format(t);
-                        }
-                        return a.map(format).join(s);
-                    }
-
-                    let a = [{ day: 'numeric' }, { month: 'short' }, { year: 'numeric' }];
-                    let s = join(new Date(parseInt(1630342800000)), a, '-');
-                    console.log(s);
-
 
                     if (user.Avt != null) {
                         $("#Avt").show()
@@ -332,7 +319,6 @@
                     Active: $('input[name="Active"]:checked').val(),
                 }
 
-                console.log($('#fileImage').attr('src'))
                 if (formStatus == 'create') {
                     $.ajax({
                         type: "POST",
@@ -399,6 +385,7 @@
 
         function CloseModal() {
             $('#modal').modal('hide');
+            $("#role").hide()
         }
 
         function ShowModal() {
@@ -423,6 +410,13 @@
             $("#Gender").val("")
             $("#Birthday").val("")
             $("#Address").val("")
+        }
+
+        function ClearErrors() {
+            $("#Username-error").remove()
+            $("#Fullname-error").remove()
+            $("#Email-error").remove()
+            $("#Password-error").remove()
         }
 
     </script>

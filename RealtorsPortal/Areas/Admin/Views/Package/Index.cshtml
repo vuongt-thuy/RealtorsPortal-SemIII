@@ -8,172 +8,296 @@
 @section section_title { Advertisement  Packages Management }
 @section breadcrumb { Advertisement  Packages Management }
 
+@model DataAccessLayer.Models.Entities.Package
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+}
+
 <div class="row">
     <div class="col-md-3">
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modelPackage" style="width: 200px;">
-            <i class="fas fa-plus"></i>  Add New Package
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" style="width: 200px;">
+            <i class="fas fa-plus"></i>  Add Packages
         </button>
     </div>
-    <div class="col-md-6">
-        <a href="@Url.Action("WhoSubscribed" , "Package")" class="btn btn-warning" style="width: 400px;">
-            <i class="fas fa-list"></i> Who Subscribed Advertising Packages
-        </a>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div class="card-body" style="display: block;">
+                <table id="tblCategories" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>NO.</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Priority</th>
+                            <th>Active</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="row" style="margin-top: 30px">
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Package VIP 1</h3>
-
-                <div class="card-tools">
-                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                The body of the card
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Package VIP 2</h3>
-
-                <div class="card-tools">
-                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                The body of the card
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Package VIP 3</h3>
-
-                <div class="card-tools">
-                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                The body of the card
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Package VIP 4</h3>
-
-                <div class="card-tools">
-                    <button type="button" data-toggle="modal" data-target="#modelPackage" class="btn btn-tool">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                The body of the card
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Package VIP 4</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                The body of the card
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </div>
-</div>
-
-<div class="modal fade" id="modelPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add/Edit Package</h5>
+                <h5 class="modal-title" id="modalTitle">Add New Packages</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" id="name" class="form-control" value="">
+            <form action="/" method="post" id="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.Id)
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name">Price</label>
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name">Priority</label>
+                                @Html.EditorFor(model => model.Priority, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Name">Description</label>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Active)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="true" checked id="radio2">
+                                    <label class="form-check-label" for="radio2">On</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="false" id="radio1">
+                                    <label class="form-check-label" for="radio1">Off</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
-                <div class="form-group">
-                    <label for="inputName">Status</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+            </form>
+
         </div>
     </div>
 </div>
 
 @section scripts {
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script>
+        $(function () {
+            LoadData();
+        });
+
+        var formStatus = 'create'
+
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
+
+        function LoadData() {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Package/LoadPackages",
+                success: function (res) {
+                    var data = []
+                    for (var i = 0; i < res.length; i++) {
+                        data[i] = {
+                            "No": i + 1,
+                            "Name": res[i].Name,
+                            "Price": res[i].Price,
+                            "Priority": res[i].Priority,
+                            "Active": res[i].Active ? "<span class='badge bg-primary'>Active</span>" : "<span class='badge bg-warning'>Deactivate</span>",
+                            "Action":
+                                "<a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
+                        }
+                    }
+                    $('#tblCategories').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'No' },
+                            { data: 'Name' },
+                            { data: 'Price' },
+                            { data: 'Priority' },
+                            { data: 'Active' },
+                            { data: 'Action' },
+                        ],
+                        "bDestroy": true
+                    });
+                }
+            })
+        }
+
+        $(document).on("click", "#btnDelete", function () {
+            var confirmation = confirm("Do you want delete this package?");
+
+            if (confirmation) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/Package/AdminPackagesDelete",
+                    data: { id: $(this).data("id") },
+                    success: function (res) {
+                        LoadData()
+                        console.log(res.msg)
+                        toastr.success(res.msg)
+                    }
+                })
+            }
+        })
+
+        $(document).on("click", "#btnEdit", function () {
+            formStatus = 'edit'
+
+            ClearErrors()
+            $("#modalTitle").html("Edit Package")
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Package/Get",
+                data: { id: $(this).data("id") },
+                success: function (res) {
+                    var package = res.data
+                    $("#Id").val(package.Id)
+                    $("#Name").val(package.Name)
+                    $("#Priority").val(package.Priority)
+                    $("#Price").val(package.Price)
+                    $("#Description").val(package.Description)
+                    $("input[name=Active][value=" + package.Active + "]").prop('checked', true);
+                }
+            })
+            ShowModal()
+        })
+
+        var formValidate = $("#form").validate({
+            submitHandler: function () {
+                event.preventDefault()
+                var Package = {
+                    Id: $("#Id").val(),
+                    Name: $("#Name").val(),
+                    Priority: $("#Priority").val(),
+                    Price: $("#Price").val(),
+                    Description: $("#Description").val(),       
+                    Active: $('input[name="Active"]:checked').val(),
+                }
+
+                console.log(Package)
+                if (formStatus == 'create') {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Package/AdminPackagesCreate",
+                        data: { package: Package },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                } else if (formStatus == 'edit') {
+                    Package.Id = $("#Id").val()
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Package/AdminPackagesEdit",
+                        data: { package: Package },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+
+        function CloseModal() {
+            $('#modal').modal('hide');
+        }
+
+        function ShowModal() {
+            $('#modal').modal('show');
+        }
+
+        $('#modal').on('hidden.bs.modal', function () {
+            ClearValue()
+        })
+
+        function ClearValue() {
+            formStatus = 'create'
+            $("#modalTitle").html("Add New Packages")
+            $("#Name").val("")
+            $("#Priority").val("")
+            $("#Price").val("")
+            $("#Description").val("")
+        }
+
+        function ClearErrors() {
+            $("#Name-error").remove()
+            $("#Price-error").remove()
+            $("#Priority-error").remove()
+        }
+
+    </script>
 }
+

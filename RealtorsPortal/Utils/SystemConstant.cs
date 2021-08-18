@@ -17,5 +17,9 @@ namespace RealtorsPortal.Utils
 
         public static bool MALE = true;
         public static bool FEMALE = false;
+
+        public static int APPROVED = 0;
+        public static int UNAPPROVED = 1;
+        public static int UNVERIFIED = 2;
     }
 }

@@ -12,10 +12,11 @@ namespace DataAccessLayer.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public int PackageId { get; set; }
         public int DayAds { get; set; }
         public int NumberAds { get; set; }
+        public int TotalAds { get; set; }
         public double TotalMoney { get; set; }
         public bool Active { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -25,6 +26,8 @@ namespace DataAccessLayer.Models.Entities
         public Package Package { get; set; }
 
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Ads> Ads { get; set; }
+
     }
 }

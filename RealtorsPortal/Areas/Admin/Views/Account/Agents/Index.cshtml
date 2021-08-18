@@ -268,6 +268,7 @@
 
         $(document).on("click", "#btnEdit", function () {
             formStatus = 'edit'
+            ClearErrors()
             $("#modalTitle").html("Edit Agent")
             $("#role").show()
             $.ajax({
@@ -284,26 +285,10 @@
                     $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
                     $("#Address").val(user.Address)
                     $("#Password").val(user.Password)
-                    //$("#Birthday").val(user.Birthday)
+                    $("#Birthday").val(user.Birthday)
                     $("#Company").val(user.Company)
                     $("#RoleId").val(user.RoleId).attr("selected", "selected")
                     $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
-
-
-                    console.log(user.Birthday)
-
-                    function join(t, a, s) {
-                        function format(m) {
-                            let f = new Intl.DateTimeFormat('en', m);
-                            return f.format(t);
-                        }
-                        return a.map(format).join(s);
-                    }
-
-                    let a = [{ day: 'numeric' }, { month: 'short' }, { year: 'numeric' }];
-                    let s = join(new Date(parseInt(1630342800000)), a, '-');
-                    console.log(s);
-
 
                     if (user.Avt != null) {
                         $("#Avt").show()
@@ -408,6 +393,7 @@
 
         $('#modal').on('hidden.bs.modal', function () {
             ClearValue()
+            $("#role").hide()
         })
 
         function ClearValue() {
@@ -426,6 +412,13 @@
             $("#Address").val("")
         }
 
+
+        function ClearErrors() {
+            $("#Username-error").remove()
+            $("#Fullname-error").remove()
+            $("#Email-error").remove()
+            $("#Password-error").remove()
+        }
     </script>
 }
 

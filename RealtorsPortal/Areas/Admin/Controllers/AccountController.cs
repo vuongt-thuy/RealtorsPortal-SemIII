@@ -32,12 +32,27 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public JsonResult Get(int id)
         {
-            return Json(new ResponeJSON<User>
+            var res = resUser.FindById(id);
+            return Json(new ResponeJSON<object>
             {
                 statusCode = 200,
                 msg = "Successfully!",
-                data = resUser.FindById(id)
-            }, JsonRequestBehavior.AllowGet); ;
+                data = new
+                {
+                    Id = res.Id,
+                    Username = res.Username,
+                    Fullname = res.Fullname,
+                    Phone = res.Phone,
+                    Email = res.Email,
+                    Birthday = String.Format("{0:yyyy-MM-dd}", res.Birthday),
+                    Address = res.Address,
+                    Avt = res.Avt,
+                    Company = res.Company,
+                    Gender = res.Gender,
+                    Password = res.Password,
+                    RoleId = res.RoleId,
+                }
+            }, JsonRequestBehavior.AllowGet);
         }
 
         // Admin User

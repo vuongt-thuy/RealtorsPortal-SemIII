@@ -34,7 +34,7 @@ namespace DataAccessLayer.Models.Entities
         public string Avt { get; set; }
         public bool Gender { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Birthday { get; set; }
         [DisplayName("Address")]
         public string Address { get; set; }
@@ -50,6 +50,7 @@ namespace DataAccessLayer.Models.Entities
         [ForeignKey("RoleId")]
         public UserRole UserRole { get; set; }
 
-        public ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<PackageOfUser> PackageOfUsers { get; set; }
     }
 }

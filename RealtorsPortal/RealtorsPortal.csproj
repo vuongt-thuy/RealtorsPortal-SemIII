@@ -183,7 +183,6 @@
     <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Trade\EditAgent.cshtml" />
     <Content Include="Areas\Admin\Views\Trade\EditPrivateSeller.cshtml" />
-    <Content Include="Areas\Admin\Views\Package\WhoSubscribed.cshtml" />
     <Content Include="Areas\Admin\Views\Account\PrivateSellers\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Agents\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\AdminUsers\Index.cshtml" />
