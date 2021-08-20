@@ -234,6 +234,9 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Home\MortgageCalculator.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Sell\AdsDetail.cshtml" />
+    <Content Include="Views\Common\_ListAds.cshtml" />
+    <Content Include="Views\Common\AdsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

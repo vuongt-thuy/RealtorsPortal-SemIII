@@ -10,8 +10,11 @@ namespace DataAccessLayer.Models.ViewModel
     public class AdsViewModel
     {
         public int Id { get; set; }
-        public User User { get; set; }
+        public string UserFullname { get; set; }
+        public string UserAvt { get; set; }
+        public string UserPhone { get; set; }
         public string Title { get; set; }
+        public int CountryId { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string District { get; set; }
@@ -21,13 +24,12 @@ namespace DataAccessLayer.Models.ViewModel
         public double Price { get; set; }
         public string Description { get; set; }
         public string Note { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
         public int CategoryId { get; set; }
         public string Need { get; set; }
         public string UnitPrice { get; set; }
         public int Priority { get; set; }
         public int Status { get; set; }
+        public string RoleName { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
