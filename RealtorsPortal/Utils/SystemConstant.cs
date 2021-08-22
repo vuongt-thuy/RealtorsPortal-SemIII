@@ -17,5 +17,15 @@ namespace RealtorsPortal.Utils
 
         public static bool MALE = true;
         public static bool FEMALE = false;
+
+        public static int APPROVED = 0;
+        public static int UNAPPROVED = 1;
+        public static int UNVERIFIED = 2;
+
+        public static string SORT_BY_DEFAULT = "sortByDefault";
+        public static string SORT_ALPHABET_ASCENDING = "sortByAlphabetAscending";
+        public static string SORT_ALPHABET_DECENDING = "sortByAlphabetDecending";
+        public static string SORT_BY_PRICE_ASCENDING = "sortByPriceAscending";
+        public static string SORT_BY_PRICE_DECENDING = "sortByPriceDecending";
     }
 }

@@ -28,6 +28,20 @@ namespace RealtorsPortal
             );
 
             routes.MapRoute(
+                name: "User_Logout",
+                url: "Logout",
+                defaults: new { action = "Logout", controller = "Account" },
+                namespaces: new[] { "RealtorsPortal.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Mortgage_Calculator",
+                url: "MortgageCalculator",
+                defaults: new { action = "Calculator", controller = "Home" },
+                namespaces: new[] { "RealtorsPortal.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

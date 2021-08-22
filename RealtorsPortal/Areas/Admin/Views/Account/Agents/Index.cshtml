@@ -1,4 +1,6 @@
 ﻿
+@model DataAccessLayer.Models.Entities.User
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -9,6 +11,14 @@
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="~/Areas/Content/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 }
 
 @section title { Agents Account }
@@ -32,118 +42,153 @@
                     <thead>
                         <tr>
                             <th>NO.</th>
-                            <th>Name</th>
+                            <th>Username</th>
                             <th>Phone</th>
-                            <th>Engine version</th>
-                            <th>Status</th>
+                            <th>Email</th>
+                            <th>Active</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                ccc
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                bbb
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Trident</td>
-                            <td>
-                                aaa
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>
-                                <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 86px;">
-                                    <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;">
-                                        <input type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="" data-off-color="danger" data-on-color="success">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
 </div>
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add/Edit Form</h5>
+                <h5 class="modal-title" id="modalTitle">Add New Agent</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form action="/" method="post" id="form">
+
+                <div class="modal-body">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Avt)
+                                @Html.Editor("fileImage", new { htmlAttributes = new { type = "file" } })
+                                <img src="#" name="Avt" id="Avt" width="200" height="250" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Fullname</label>
+                                @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Username</label>
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone)
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Birthday)
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control"} })
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Gender)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Gender" value="true" checked>
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Gender" value="false">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address)
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Company)
+                                @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="role">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RoleId)
+                                @Html.DropDownListFor(model => model.RoleId, new SelectList(ViewBag.Roles, "Id", "Name"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Active)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="true" checked>
+                                    <label class="form-check-label">On</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Active" value="false">
+                                    <label class="form-check-label">Off</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" id="name" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Code</label>
-                    <input type="text" id="code" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="inputName">Status</label>
-                    <input type="text" id="code" class="form-control" value="">
+                <div class="row" id="content-detail">
+
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </div>
 
 @section scripts {
+    <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -151,19 +196,257 @@
     <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="~/Areas/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
     <script>
         $(function () {
-
-            $("#tblPrivateSeller").DataTable()
-
-            $("#tblAgent").DataTable()
+            LoadData();
+            $("#Avt").hide();
+            $("#role").hide()
         });
+
+        var formStatus = 'create'
 
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
 
+        function LoadData() {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/LoadAgents",
+                success: function (res) {
+                    var data = []
+                    for (var i = 0; i < res.length; i++) {
+                        data[i] = {
+                            "No": i + 1,
+                            "Username": res[i].Username,
+                            "Phone": res[i].Phone,
+                            "Email": res[i].Email,
+                            "Active": res[i].Active ? "<span class='badge bg-primary'>Active</span>" : "<span class='badge bg-warning'>Deactivate</span>",
+                            "":
+                                "</a> <a href='javascript:void(0)' class='btn btn-warning' data-id=" + res[i].Id + " id='btnDetail'><i class='fas fa-eye'></i></a> <a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
+                        }
+                    }
+                    $('#tblPrivateSeller').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'No' },
+                            { data: 'Username' },
+                            { data: 'Phone' },
+                            { data: 'Email' },
+                            { data: 'Active' },
+                            { data: '' },
+                        ],
+                        "bDestroy": true
+                    });
+                }
+            })
+        }
+
+
+        $("#fileImage").change(function (e) {
+            productImg = $("#fileImage")[0].files[0]
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.getElementById("Avt");
+                img.alt = "Description Image";
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $("#fileImage").after($("#Avt").show())
+            }
+        })
+
+        $(document).on("click", "#btnDelete", function () {
+            var confirmation = confirm("Do you want delete this user?");
+
+            if (confirmation) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/Account/Delete",
+                    data: { id: $(this).data("id") },
+                    success: function (res) {
+                        LoadData()
+                        console.log(res.msg)
+                        toastr.success(res.msg)
+                    }
+                })
+            }
+        })
+
+        $(document).on("click", "#btnEdit", function () {
+            formStatus = 'edit'
+            ClearErrors()
+            $("#modalTitle").html("Edit Agent")
+            $("#role").show()
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/Get",
+                data: { id: $(this).data("id") },
+                success: function (res) {
+                    var user = res.data
+                    $("#Id").val(user.Id)
+                    $("#Username").val(user.Username)
+                    $("#Fullname").val(user.Fullname)
+                    $("#Phone").val(user.Phone)
+                    $("#Email").val(user.Email)
+                    $("input[name=Gender][value=" + user.Gender + "]").prop('checked', true);
+                    $("#Address").val(user.Address)
+                    $("#Password").val(user.Password)
+                    $("#Birthday").val(user.Birthday)
+                    $("#Company").val(user.Company)
+                    $("#RoleId").val(user.RoleId).attr("selected", "selected")
+                    $("input[name=Active][value=" + user.Active + "]").prop('checked', true);
+
+                    if (user.Avt != null) {
+                        $("#Avt").show()
+                        $('#Avt').attr("src", user.Avt);
+                    }
+
+                    console.log(user)
+                }
+            })
+            ShowModal()
+        })
+
+        var formValidate = $("#form").validate({
+            submitHandler: function () {
+                event.preventDefault()
+                var User = {
+                    Id: $("#Id").val(),
+                    Username: $("#Username").val(),
+                    Fullname: $("#Fullname").val(),
+                    Password: $("#Password").val(),
+                    Phone: $("#Phone").val(),
+                    Email: $("#Email").val(),
+                    Avt: $('#fileImage').prop('files')[0] ? 'Users/' + $('#fileImage').prop('files')[0].name : $('#Avt').attr('src'),
+                    Gender: $('input[name="Gender"]:checked').val(),
+                    Birthday: $("#Birthday").val(),
+                    Address: $("#Address").val(),
+                    Company: $("#Company").val(),
+                    RoleId: 1,
+                    Active: $('input[name="Active"]:checked').val(),
+                }
+
+                if (formStatus == 'create') {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Account/AgentCreate",
+                        data: { user: User },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                UploadImage()
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                } else if (formStatus == 'edit') {
+                    User.Id = $("#Id").val()
+                    User.RoleId = User.RoleId = $("select#RoleId option").filter(":selected").val()
+
+                    if (User.Avt == "") {
+                        User.Avt == $("#Avt").val()
+                    }
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Account/AgentEdit",
+                        data: { user: User },
+                        success: function (res) {
+                            if (res.statusCode == 200) {
+                                UploadImage()
+                                LoadData()
+                                CloseModal()
+                                toastr.success(res.msg)
+                            } else if (res.statusCode == 201) {
+                                formValidate.showErrors(res.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+
+        function UploadImage() {
+            var file = $("#fileImage")[0].files[0];
+            var formData = new FormData();
+            if (file != null) {
+                formData.append("image", file);
+            }
+           
+            
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Account/UploadImage",
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (res) {
+
+                }
+            })
+        }
+
+        $(document).on("click", "#btnDetail", function () {
+            var id = $(this).data("id")
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/Detail/" + id,
+                success: function (res) {
+                    $("#content-detail").html(res)
+                    $('#modal-detail').modal('show');
+                }
+            })
+        })
+
+        function CloseModal() {
+            $('#modal').modal('hide');
+        }
+
+        function ShowModal() {
+            $('#modal').modal('show');
+        }
+
+        $('#modal').on('hidden.bs.modal', function () {
+            ClearValue()
+            $("#role").hide()
+        })
+
+        function ClearValue() {
+            formStatus = 'create'
+            $("#modalTitle").html("Add New Agent")
+            $("#Username").val("")
+            $("#Fullname").val("")
+            $("#Password").val("")
+            $("#Company").val("")
+            $("#Phone").val("")
+            $("#Email").val("")
+            $("#Avt").hide()
+            $('#Avt').attr('src', '');
+            $('#fileImage').val('');
+            $("#Gender").val("")
+            $("#Birthday").val("")
+            $("#Address").val("")
+        }
+
+
+        function ClearErrors() {
+            $("#Username-error").remove()
+            $("#Fullname-error").remove()
+            $("#Email-error").remove()
+            $("#Password-error").remove()
+        }
     </script>
 }
 

@@ -180,6 +180,8 @@
 
         $(document).on("click", "#btnEdit", function () {
             formStatus = 'edit'
+
+            ClearErrors()
             $("#modalTitle").html("Edit Category")
             $.ajax({
                 type: "GET",
@@ -257,6 +259,10 @@
             formStatus = 'create'
             $("#modalTitle").html("Add New Category")
             $("#Name").val("")
+        }
+
+        function ClearErrors() {
+            $("#Name-error").remove()
         }
 
     </script>

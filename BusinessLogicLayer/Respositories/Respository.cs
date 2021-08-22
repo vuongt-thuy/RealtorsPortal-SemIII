@@ -90,7 +90,7 @@ namespace BusinessLogicLayer.Respositories
 
         public IEnumerable<T> GetList(Expression<Func<T, bool>> predicate)
         {
-            return tbl.Where(predicate).AsNoTracking().AsEnumerable();
+            return tbl.Where(predicate).AsNoTracking();
         }
 
         public virtual IEnumerable<T> GetAll()

@@ -36,11 +36,6 @@
             <i class="fas fa-plus"></i>  Add Packages
         </button>
     </div>
-    <div class="col-md-6">
-        <a href="@Url.Action("WhoSubscribed" , "Package")" class="btn btn-warning" style="width: 400px;">
-            <i class="fas fa-list"></i> Who Subscribed Advertising Packages
-        </a>
-    </div>
 </div>
 
 <div class="row" style="margin-top: 30px;">
@@ -106,6 +101,7 @@
                             <div class="form-group">
                                 <label for="Name">Description</label>
                                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -210,6 +206,8 @@
 
         $(document).on("click", "#btnEdit", function () {
             formStatus = 'edit'
+
+            ClearErrors()
             $("#modalTitle").html("Edit Package")
             $.ajax({
                 type: "GET",
@@ -296,6 +294,12 @@
             $("#Priority").val("")
             $("#Price").val("")
             $("#Description").val("")
+        }
+
+        function ClearErrors() {
+            $("#Name-error").remove()
+            $("#Price-error").remove()
+            $("#Priority-error").remove()
         }
 
     </script>

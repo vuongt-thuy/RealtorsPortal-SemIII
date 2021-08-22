@@ -28,7 +28,6 @@ namespace DataAccessLayer.Models.Entities
         public bool Active { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-        public ICollection<Ads> Ads { get; set; }
+        public virtual ICollection<PackageOfUser> PackageOfUsers { get; set; }
     }
 }

@@ -1,18 +1,3 @@
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.dll
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.xml
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojAssemblyReference.cache
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
-E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
@@ -28,3 +13,20 @@ D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\Busin
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 D:\ASP.NET\Project\Code\RealtorsPortal-SemIII\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\AutoMapper.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\AutoMapper.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojAssemblyReference.cache
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+E:\Documents\CurriculumBKAP\SemIII\Thực hành\Đồ án SEM III\RealtorsPortal\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

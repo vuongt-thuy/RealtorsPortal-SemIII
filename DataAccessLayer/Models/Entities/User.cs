@@ -28,11 +28,13 @@ namespace DataAccessLayer.Models.Entities
         [RegularExpression("^[0-9]{10}", ErrorMessage = "Please enter the correct format, for example: 0935444999!")]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Please enter your email!")]
-        [RegularExpression("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$", ErrorMessage = "Please enter the correct format, for example: demo@gmail.com!")]
+        [RegularExpression("^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", ErrorMessage = "Please enter the correct format, for example: demo@gmail.com!")]
         public string Email { get; set; }
         [DisplayName("Avatar")]
         public string Avt { get; set; }
         public bool Gender { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Birthday { get; set; }
         [DisplayName("Address")]
         public string Address { get; set; }
@@ -48,6 +50,8 @@ namespace DataAccessLayer.Models.Entities
         [ForeignKey("RoleId")]
         public UserRole UserRole { get; set; }
 
-        public ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<PackageOfUser> PackageOfUsers { get; set; }
+        public virtual ICollection<Ads> Ads { get; set; }
     }
 }

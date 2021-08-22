@@ -72,7 +72,7 @@ namespace RealtorsPortal.Controllers
 
                     if (resUser.Create(user))
                     {
-                        SendEmail.Send(user.Email, 
+                        SendEmail.Notification(user.Email, 
                                        "Account Registration Confirmation",
                                        "You have successfully registered an account!" + " Account " + " Email: " + user.Email + " Password: " + user.Password);
                         return RedirectToRoute("User_Login");
