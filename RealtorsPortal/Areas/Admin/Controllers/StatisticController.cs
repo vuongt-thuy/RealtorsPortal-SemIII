@@ -79,24 +79,5 @@ namespace RealtorsPortal.Areas.Admin.Controllers
         {
             return View();
         }
-
-        public JsonResult ChartAds(int month, int year)
-        {
-            var ads = resAds.GetList(x => x.CreatedAt.Month == month && x.CreatedAt.Year == year);
-            var approvedAds = ads.Where(x => x.Status == SystemConstant.APPROVED).Count();
-            var unapprovedAds = ads.Where(x => x.Status == SystemConstant.UNAPPROVED).Count();
-            var unverifiedAds = ads.Where(x => x.Status == SystemConstant.UNVERIFIED).Count();
-
-            List<DataPoint> dataPoints = new List<DataPoint>();
-            dataPoints.Add(new DataPoint(approvedAds, "Approved"));
-            dataPoints.Add(new DataPoint(unapprovedAds, "Unapproved"));
-            dataPoints.Add(new DataPoint(unverifiedAds, "Unverified"));
-
-            return Json(new
-            {
-                title = "Statistic Of Advertisements",
-                data = dataPoints,
-            }, JsonRequestBehavior.AllowGet);
-        }
     }
 }
