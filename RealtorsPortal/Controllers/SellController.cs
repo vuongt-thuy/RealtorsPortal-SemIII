@@ -38,7 +38,7 @@ namespace RealtorsPortal.Controllers
 
         public ActionResult LoadAds(int catId, int countryId, string strPrice, string sortBy, string startDate, string endDate, int page = 1)
         {
-            var ads = resAds.GetAll().Where(x => x.Status == SystemConstant.APPROVED).Select(x => new AdsMapper().Mapping(x));
+            var ads = resAds.GetAll().Where(x => x.Need == SystemConstant.NEED_SELL && x.Status == SystemConstant.APPROVED).Select(x => new AdsMapper().Mapping(x));
             var result = new List<AdsViewModel>();
 
             result = ads.ToList();
@@ -140,7 +140,7 @@ namespace RealtorsPortal.Controllers
         public ActionResult AdsDetail(int id)
         {
             var ads = new AdsMapper().Mapping(resAds.FindById(id));
-            var allAds = resAds.GetList(x => x.Status == SystemConstant.APPROVED && x.CategoryId == ads.CategoryId).ToList();
+            var allAds = resAds.GetList(x => x.Status == SystemConstant.APPROVED && x.Need == SystemConstant.NEED_SELL && x.CategoryId == ads.CategoryId).ToList();
             int index = allAds.FindIndex(x => x.Id == ads.Id);
             ViewBag.adsRelateds = allAds.Where(x => x != allAds.ElementAtOrDefault(index))
                 .Select(x => new AdsMapper().Mapping(x))

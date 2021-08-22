@@ -27,5 +27,8 @@ namespace RealtorsPortal.Utils
         public static string SORT_ALPHABET_DECENDING = "sortByAlphabetDecending";
         public static string SORT_BY_PRICE_ASCENDING = "sortByPriceAscending";
         public static string SORT_BY_PRICE_DECENDING = "sortByPriceDecending";
+
+        public static string NEED_SELL = "Sell";
+        public static string NEED_RENT = "Rent";
     }
 }

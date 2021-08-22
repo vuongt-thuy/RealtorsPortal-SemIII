@@ -27,9 +27,9 @@ namespace BusinessLogicLayer.Mapper
             //var user = ads.PackageOfUser.User;
             AdsViewModel adsDTO = GetDTO(ads);
             adsDTO.Id = ads.Id;
-            adsDTO.UserFullname = ads.User.Fullname;
-            adsDTO.UserPhone = ads.User.Phone;
-            adsDTO.UserAvt = ads.User.Avt;
+            adsDTO.UserFullname = "fullname";
+            adsDTO.UserPhone = "phone";
+            adsDTO.UserAvt = "avt";
             adsDTO.CountryId = country.Id;
             adsDTO.Country = country.Name;
             adsDTO.City = city.Name;
