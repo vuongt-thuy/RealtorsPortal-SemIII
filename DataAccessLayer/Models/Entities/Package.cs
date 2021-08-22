@@ -29,6 +29,5 @@ namespace DataAccessLayer.Models.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public virtual ICollection<PackageOfUser> PackageOfUsers { get; set; }
-        public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }

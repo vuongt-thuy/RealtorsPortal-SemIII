@@ -13,15 +13,16 @@ namespace DataAccessLayer.Models.Entities
         [Key]
         public int Id { get; set; }
         public int? UserId { get; set; }
-        public int PackageId { get; set; }
+        public int? PackageOfUserId { get; set; }
         public double TotalMoney { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        [ForeignKey("PackageId")]
-        public virtual Package Package { get; set; }
-
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
+
+        [ForeignKey("PackageOfUserId")]
+        public virtual PackageOfUser PackageOfUser { get; set; }
+
     }
 }

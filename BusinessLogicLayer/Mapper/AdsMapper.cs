@@ -24,12 +24,12 @@ namespace BusinessLogicLayer.Mapper
             var district = _resDistrict.FindById(ads.Ward.DistrictId);
             var city = _resCity.FindById(district.CityId);
             var country = _resCountry.FindById(city.CountryId);
-            var user = ads.PackageOfUser.User;
+            //var user = ads.PackageOfUser.User;
             AdsViewModel adsDTO = GetDTO(ads);
             adsDTO.Id = ads.Id;
-            adsDTO.UserFullname = user.Fullname;
-            adsDTO.UserPhone = user.Phone;
-            adsDTO.UserAvt = user.Avt;
+            adsDTO.UserFullname = ads.User.Fullname;
+            adsDTO.UserPhone = ads.User.Phone;
+            adsDTO.UserAvt = ads.User.Avt;
             adsDTO.CountryId = country.Id;
             adsDTO.Country = country.Name;
             adsDTO.City = city.Name;

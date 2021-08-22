@@ -85,7 +85,7 @@ namespace RealtorsPortal.Controllers
             #endregion
 
             #region FILTER BY DATE
-            if(startDate != null && endDate != null)
+            if (startDate != null && endDate != null)
             {
                 DateTime dtStartDate = DateTime.Parse(startDate);
                 DateTime dtEndDate = DateTime.Parse(endDate);
@@ -115,7 +115,7 @@ namespace RealtorsPortal.Controllers
 
             #region PAGINATION
             int limit = 2;
-            int totalPage = (int) Math.Ceiling((decimal)result.Count / limit);
+            int totalPage = (int)Math.Ceiling((decimal)result.Count / limit);
             result = result.Skip((page - 1) * limit).Take(limit).ToList();
 
             ViewBag.totalPage = totalPage;
@@ -154,8 +154,9 @@ namespace RealtorsPortal.Controllers
         }
 
         [HttpPost]
-        public JsonResult Contact(Contact contact)
+        public ActionResult Contact(Contact contact)
         {
+            bool check = false;
             if (ModelState.IsValid)
             {
                 contact.Status = false;
@@ -164,8 +165,7 @@ namespace RealtorsPortal.Controllers
 
                 if (resContact.Create(contact))
                 {
-                    SendEmail.Notification(contact.Email, "Contact",
-                       "We have received your information. Please wait for communication from Realtors Portal!");
+                    check = true;
                     return Json(new ResponeJSON<Contact>
                     {
                         statusCode = 200,
@@ -173,6 +173,12 @@ namespace RealtorsPortal.Controllers
                         data = null
                     }, JsonRequestBehavior.AllowGet);
                 }
+            }
+
+            if(check == true)
+            {
+                SendEmail.Notification(contact.Email, "Contact",
+                       "We have received your information. Please wait for communication from Realtors Portal!");
             }
 
             Dictionary<string, string> errors = new Dictionary<string, string>();

@@ -191,6 +191,7 @@
                     <div class="widget ltn__form-widget">
                         <h4 class="ltn__widget-title ltn__widget-title-border-2">Drop Messege To Contact</h4>
                         <form action="#" id="formContact">
+                            <input type="hidden" name="AdsId" id="AdsId" value="@Model.Id" />
                             <input type="text" name="Name" id="Name" placeholder="Your Name*" value="">
                             <input type="text" name="Email" id="Email" placeholder="Your e-Mail*" value="">
                             <input type="text" name="Phone" id="Phone" placeholder="Your Phone*" value="">
@@ -610,6 +611,7 @@
                 var contact = {
                     Name: $("#Name").val(),
                     Email: $("#Email").val(),
+                    AdsId: $("#AdsId").val(),
                     Phone: $("#Phone").val(),
                     Message: $("#Message").val(),
                 }

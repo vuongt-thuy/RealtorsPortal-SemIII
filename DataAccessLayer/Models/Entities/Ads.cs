@@ -13,6 +13,7 @@ namespace DataAccessLayer.Models.Entities
     {
         [Key]
         public int Id { get; set; }
+        public int? UserId { get; set; }
         public string Title { get; set; }
         public string DetailAddress { get; set; }
         public int LandArea { get; set; }
@@ -36,7 +37,10 @@ namespace DataAccessLayer.Models.Entities
 
         [ForeignKey("WardId")]
         public virtual Ward Ward { get; set; }
-        
+
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+
         [ForeignKey("PackageOfUserId")]
         public virtual PackageOfUser PackageOfUser { get; set; }
 

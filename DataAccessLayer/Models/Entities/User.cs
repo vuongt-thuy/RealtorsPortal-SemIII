@@ -52,5 +52,6 @@ namespace DataAccessLayer.Models.Entities
 
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<PackageOfUser> PackageOfUsers { get; set; }
+        public virtual ICollection<Ads> Ads { get; set; }
     }
 }

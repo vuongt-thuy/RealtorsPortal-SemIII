@@ -576,7 +576,10 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             return Json(resUser.GetList(x => x.RoleId == SystemConstant.VISITOR), JsonRequestBehavior.AllowGet);
         }
 
-
+        public ActionResult Detail(int id)
+        {
+            return PartialView("~/Areas/Admin/Views/Account/_Detail.cshtml", resUser.FindById(id));
+        }
 
         [HttpPost]
         public bool UploadImage()

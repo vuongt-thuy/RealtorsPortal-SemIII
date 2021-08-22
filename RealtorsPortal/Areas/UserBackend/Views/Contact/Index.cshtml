@@ -1,0 +1,85 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Entities.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/UserBackend/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <!-- Datepicker css -->
+    <link href="~/Areas/UserBackend/Content/assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/flag-icon.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/UserBackend/Content/assets/css/style.css" rel="stylesheet" type="text/css">
+}
+
+@section page_title { Contacts}
+@section breadcrumb { Contacts }
+
+<div class="row">
+    <!-- Start col -->
+    <div class="col-lg-12">
+        <div class="card m-b-30">
+            <div class="card-header">
+                <h5 class="card-title">Contacts Listing</h5>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#NO</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Title Ads</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int i = 1;
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.Name</td>
+                                        <td>@item.Ads.Title</td>
+                                        <td>
+                                            @if (item.Status == true)
+                                            {
+                                                <label class="btn btn-warning">No process</label>
+                                            }
+                                            else
+                                            {
+                                                <label class="btn btn-success">Processed</label>
+                                            }
+                                        </td>
+                                        <td>
+                                            <div class="tabledit-toolbar btn-toolbar">
+                                                <div class="btn-group btn-group-sm" style="float: none;">
+                                                    <a href="@Url.Action("Detail", "Contact", new { id = item.Id})" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-eye"></span></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End col -->
+</div>
+
+@section scripts {
+    <!-- Datepicker JS -->
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datepicker/datepicker.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datepicker/i18n/datepicker.en.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/js/custom/custom-form-datepicker.js"></script>
+
+}

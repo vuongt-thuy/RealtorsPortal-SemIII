@@ -106,8 +106,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Birthday)
-                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control"} })
-                                
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -172,6 +172,21 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row" id="content-detail">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts {
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Areas/Content/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -211,7 +226,7 @@
                             "Email": res[i].Email,
                             "Active": res[i].Active ? "<span class='badge bg-primary'>Active</span>" : "<span class='badge bg-warning'>Deactivate</span>",
                             "":
-                                "<a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
+                                "</a> <a href='javascript:void(0)' class='btn btn-warning' data-id=" + res[i].Id + " id='btnDetail'><i class='fas fa-eye'></i></a> <a href='javascript:void(0)' class='btn btn-primary' data-id=" + res[i].Id + " id='btnEdit'><i class='fas fa-edit'></i></a> <a href='javascript:void(0)' class='btn btn-danger' data-id=" + res[i].Id + " id='btnDelete'><i class='fas fa-trash'></i></a>"
                         }
                     }
                     $('#tblPrivateSeller').DataTable({
@@ -298,6 +313,18 @@
                 }
             })
             ShowModal()
+        })
+
+        $(document).on("click", "#btnDetail", function () {
+            var id = $(this).data("id")
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Account/Detail/" + id,
+                success: function (res) {
+                    $("#content-detail").html(res)
+                    $('#modal-detail').modal('show');
+                }
+            })
         })
 
         var formValidate = $("#form").validate({
@@ -402,6 +429,7 @@
             $("#Username").val("")
             $("#Fullname").val("")
             $("#Password").val("")
+            $("#Company").val("")
             $("#Phone").val("")
             $("#Email").val("")
             $("#Avt").hide()

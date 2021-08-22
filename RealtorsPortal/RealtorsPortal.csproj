@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\TradeController.cs" />
     <Compile Include="Areas\Admin\Utils\CustomeAuthenticationAttribute.cs" />
     <Compile Include="Areas\UserBackend\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\UserBackend\Controllers\ContactController.cs" />
     <Compile Include="Areas\UserBackend\Controllers\TransactionController.cs" />
     <Compile Include="Areas\UserBackend\Controllers\UserController.cs" />
     <Compile Include="Areas\UserBackend\UserBackendAreaRegistration.cs" />
@@ -201,6 +202,8 @@
     <Content Include="Areas\Admin\Views\Account\Vistors\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Statistic\Users.cshtml" />
     <Content Include="Areas\UserBackend\Views\Transaction\History.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_Detail.cshtml" />
+    <Content Include="Areas\UserBackend\Views\Contact\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
