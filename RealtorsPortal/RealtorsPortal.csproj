@@ -204,6 +204,8 @@
     <Content Include="Areas\UserBackend\Views\Transaction\History.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_Detail.cshtml" />
     <Content Include="Areas\UserBackend\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\UserBackend\Views\Contact\Detail.cshtml" />
+    <Content Include="Areas\UserBackend\Views\Shared\_Error404.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -237,7 +239,6 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Home\MortgageCalculator.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Sell\AdsDetail.cshtml" />
     <Content Include="Views\Common\_ListAds.cshtml" />
     <Content Include="Views\Common\AdsDetail.cshtml" />
   </ItemGroup>

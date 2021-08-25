@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataAccessLayer.Models.Entities.Contact>
+﻿@model IEnumerable<DataAccessLayer.Models.ViewModel.ContactViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,9 @@
     <link href="~/Areas/UserBackend/Content/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/UserBackend/Content/assets/css/flag-icon.min.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/UserBackend/Content/assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- DataTables css -->
+    <link href="~/Areas/UserBackend/Content/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/UserBackend/Content/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 }
 
 @section page_title { Contacts}
@@ -27,7 +30,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="default-datatable" class="display table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">#NO</th>
@@ -45,9 +48,9 @@
                                     <tr>
                                         <th scope="row">@i</th>
                                         <td>@item.Name</td>
-                                        <td>@item.Ads.Title</td>
+                                        <td>@item.AdsTitle</td>
                                         <td>
-                                            @if (item.Status == true)
+                                            @if (item.Status == false)
                                             {
                                                 <label class="btn btn-warning">No process</label>
                                             }
@@ -59,7 +62,7 @@
                                         <td>
                                             <div class="tabledit-toolbar btn-toolbar">
                                                 <div class="btn-group btn-group-sm" style="float: none;">
-                                                    <a href="@Url.Action("Detail", "Contact", new { id = item.Id})" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-eye"></span></a>
+                                                    <a href="@Url.Action("Detail", "Contact", new { id = item.Id})" target="_blank" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-eye"></span></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -82,4 +85,18 @@
     <script src="~/Areas/UserBackend/Content/assets/plugins/datepicker/i18n/datepicker.en.js"></script>
     <script src="~/Areas/UserBackend/Content/assets/js/custom/custom-form-datepicker.js"></script>
 
+    <!-- Datatable js -->
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Areas/UserBackend/Content/assets/js/custom/custom-table-datatable.js"></script>
 }

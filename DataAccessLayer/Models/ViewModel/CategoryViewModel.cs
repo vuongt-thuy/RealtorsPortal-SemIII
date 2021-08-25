@@ -12,5 +12,6 @@ namespace DataAccessLayer.Models.ViewModel
         public string Name{ get; set; }
         public bool Active { get; set; }
         public int TotalAds{ get; set; }
+
     }
 }

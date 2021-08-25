@@ -1,5 +1,8 @@
-﻿using DataAccessLayer.Models.Entities;
+﻿using BusinessLogicLayer.Mapper;
+using BusinessLogicLayer.Respositories;
+using DataAccessLayer.Models.Entities;
 using DataAccessLayer.Models.ViewModel;
+using RealtorsPortal.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +13,25 @@ namespace RealtorsPortal.Controllers
 {
     public class HomeController : Controller
     {
+        private Respository<Category> resCat;
+        private Respository<Country> resCountry;
+        private Respository<Ads> resAds;
+
+        public HomeController()
+        {
+            resCat = new Respository<Category>();
+            resCountry = new Respository<Country>();
+            resAds = new Respository<Ads>();
+        }
+
         public ActionResult Index()
         {
+            ViewBag.countries = resCountry.GetAll();
+            ViewBag.categories = resCat.GetList(x => x.Active == true);
+            ViewBag.latestAds = resAds.GetList(x => x.Status == SystemConstant.APPROVED)
+                                        .OrderByDescending(x => x.CreatedAt)
+                                        .Take(10)
+                                        .Select(x => new AdsMapper().Mapping(x)); 
             return View();
         }
 

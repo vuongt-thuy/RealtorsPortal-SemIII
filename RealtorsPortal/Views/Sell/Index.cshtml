@@ -119,7 +119,6 @@
                                                 <input type="checkbox" class="filter-category" value="@item.Id">
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <span class="categorey-no">@item.TotalAds</span>
                                         </li>
                                     }
                                 </ul>
@@ -187,7 +186,6 @@
                                                 <input type="checkbox" class="filter-country" value="@item.Id">
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <span class="categorey-no">@item.TotalAds</span>
                                         </li>
                                     }
                                 }
@@ -429,11 +427,26 @@
         var page = 1
 
         $(function () {
+            var url_string = $(location).attr("href");
+                
+            var url = new URL(url_string);
+            if (url.searchParams.get('catId')) {
+                var catId = url.searchParams.get("catId");
+                var countryId = url.searchParams.get("countryId");
+
+                $("#filter-category").prop('checked', true);
+                $("#filter-country").prop('checked', true);
+                console.log($("#filter-category").prop('checked', true).val())
+            }
+
             LoadData()
-        })
+        }) 
 
 
         $('.filter-category').on('change', function () {
+            if (location.href.includes('?')) {
+                history.pushState({}, null, location.href.split('?')[0]);
+            }
 
             $('.filter-category').not(this).prop('checked', false);
             if ($(this).prop("checked") == true) {
@@ -445,7 +458,9 @@
         });
 
         $('.filter-country').on('change', function () {
-
+            if (location.href.includes('?')) {
+                history.pushState({}, null, location.href.split('?')[0]);
+            }
             $('.filter-country').not(this).prop('checked', false);
             if ($(this).prop("checked") == true) {
                 countryId = $(this).val()
@@ -456,7 +471,9 @@
         });
 
         $('.filter-price').on('change', function () {
-
+            if (location.href.includes('?')) {
+                history.pushState({}, null, location.href.split('?')[0]);
+            }
             $('.filter-price').not(this).prop('checked', false);
             if ($(this).prop("checked") == true) {
                 strPrice = $(this).val()

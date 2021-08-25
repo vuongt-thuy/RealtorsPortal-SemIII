@@ -76,9 +76,12 @@
     <Compile Include="Models\Entities\Ward.cs" />
     <Compile Include="Models\ViewModel\AdsViewModel.cs" />
     <Compile Include="Models\ViewModel\CategoryViewModel.cs" />
+    <Compile Include="Models\ViewModel\ContactViewModel.cs" />
     <Compile Include="Models\ViewModel\CountryViewModel.cs" />
     <Compile Include="Models\ViewModel\DataPoint.cs" />
     <Compile Include="Models\ViewModel\MortgageCalculator.cs" />
+    <Compile Include="Models\ViewModel\PackageViewModel.cs" />
+    <Compile Include="Models\ViewModel\RegisterViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

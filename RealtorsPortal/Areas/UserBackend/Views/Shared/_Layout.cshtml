@@ -17,7 +17,7 @@
     <title>Realtors Portal</title>
     <!-- Fevicon -->
 
-    <link rel="shortcut icon" href="~/Areas/UserBackend/Content/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="~/Areas/UserBackend/Content/assets/images/logo.png">
     <!-- Start css -->
     <!-- Switchery css -->
     <link href="~/Areas/UserBackend/Content/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
@@ -90,22 +90,22 @@
                         <li class="vertical-header">Users Management</li>
                         <li>
                             <a href="/UserBackend/User/Information">
-                                <i class="ri-profile-line"></i>Profile
+                                <i class="ri-profile-line"></i><span>Profile</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Notification", "User")">
-                                <i class="ri-notification-2-line"></i>Notifications
+                            <a href="/UserBackend/User/Notification">
+                                <i class="ri-notification-2-line"></i><span>Notifications</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index", "Contact")">
-                                <i class="ri-contacts-book-line"></i>Contact
+                            <a href="/UserBackend/Contact">
+                                <i class="ri-contacts-book-line"></i><span>Contact</span>
                             </a>
                         </li>
                         <li>
                             <a href="/Logout">
-                                <i class="ri-logout-box-r-line"></i>Logout
+                                <i class="ri-logout-box-r-line"></i><span>Logout</span>
                             </a>
                         </li>
                     </ul>
@@ -199,14 +199,14 @@
                         <h4 class="page-title">@RenderSection("page_title", required: true)</h4>
                         <div class="breadcrumb-list">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Information", "User")">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@RenderSection("breadcrumb", required: true)</li>
                             </ol>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-4">
                         <div class="widgetbar">
-                            <button class="btn btn-primary"><i class="ri-refresh-line mr-2"></i>Refresh</button>
+                            <button class="btn btn-primary" id="refresh-page"><i class="ri-refresh-line mr-2"></i>Refresh</button>
                         </div>
                     </div>
                 </div>
@@ -249,6 +249,11 @@
     <!-- Core js -->
     <script src="~/Areas/UserBackend/Content/assets/js/core.js"></script>
     <!-- End js -->
+    <script>
+        $("#refresh-page").click(function () {
+            location.reload()
+        })
+    </script>
 </body>
 
 <!-- Mirrored from themesbox.in/admin-templates/olian/html/light-vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Aug 2021 12:05:22 GMT -->

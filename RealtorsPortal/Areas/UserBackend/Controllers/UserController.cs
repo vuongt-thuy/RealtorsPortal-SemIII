@@ -48,7 +48,7 @@ namespace RealtorsPortal.Areas.UserBackend.Controllers
                         return Json(new ResponeJSON<User>
                         {
                             statusCode = 200,
-                            msg = "Profile update successful, please wait for account verification!",
+                            msg = "Profile update successful!",
                             data = user
                         }, JsonRequestBehavior.AllowGet);
                     }
@@ -89,10 +89,25 @@ namespace RealtorsPortal.Areas.UserBackend.Controllers
         public JsonResult GetCurrentUser()
         {
             var user = (User)Session["user"];
-            return Json(new ResponeJSON<User>() {
+            return Json(new ResponeJSON<object>
+            {
                 statusCode = 200,
-                msg = "Oke",
-                data = user
+                msg = "Successfully!",
+                data = new
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Fullname = user.Fullname,
+                    Phone = user.Phone,
+                    Email = user.Email,
+                    Birthday = String.Format("{0:yyyy-MM-dd}", user.Birthday),
+                    Address = user.Address,
+                    Avt = user.Avt,
+                    Company = user.Company,
+                    Gender = user.Gender,
+                    Password = user.Password,
+                    RoleId = user.RoleId,
+                }
             }, JsonRequestBehavior.AllowGet);
         }
 

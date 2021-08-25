@@ -150,7 +150,7 @@
                     $("#Email").val(user.Email)
                     $("#Address").val(user.Address)
                     $("#Company").val(user.Company)
-                    $("#Birthday").val(user.Company)
+                    $("#Birthday").val(user.Birthday)
                     $("#Password").val(user.Password)
                     if (user.Avt == null) {
                         $("#Avt").hide()
@@ -192,7 +192,7 @@
                     success: function (res) {
                         if (res.statusCode == 200) {
                             UploadImage()
-                            toastr.success(res.msg, "Success")
+                            location.reload()
                         } else if (res.statusCode == 201) {
                             formValidate.showErrors(res.data)
                         }
@@ -225,7 +225,6 @@
             var formData = new FormData();
             if (file != null) {
                 formData.append("image", file);
-                console.log("into ")
             }
 
             $.ajax({

@@ -25,6 +25,28 @@
                 Name = "Admin",
                 Active = true
             });
+
+            context.UserRole.AddOrUpdate(x => x.Id, new UserRole
+            {
+                Id = 2,
+                Name = "Agent",
+                Active = true
+            });
+
+            context.UserRole.AddOrUpdate(x => x.Id, new UserRole
+            {
+                Id = 3,
+                Name = "Private Seller",
+                Active = true
+            });
+
+            context.UserRole.AddOrUpdate(x => x.Id, new UserRole
+            {
+                Id = 4,
+                Name = "Vistor",
+                Active = true
+            });
+
             context.SaveChanges();
             //DateTime localDate = DateTime.Now;
             //context.User.AddOrUpdate(x => x.Id, new User

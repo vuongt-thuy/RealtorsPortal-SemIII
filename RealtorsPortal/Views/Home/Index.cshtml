@@ -91,49 +91,61 @@
                         <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
                             <div class="car-dealer-form-inner">
                                 <form action="#" class="ltn__car-dealer-form-box row">
-                                    <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                        <select class="nice-select" style="display: none;">
-                                            <option>Choose Area</option>
-                                            <option>chicago</option>
-                                            <option>London</option>
-                                            <option>Los Angeles</option>
-                                            <option>New York</option>
-                                            <option>New Jersey</option>
-                                        </select><div class="nice-select" tabindex="0"><span class="current">Choose Area</span><ul class="list"><li data-value="Choose Area" class="option selected">Choose Area</li><li data-value="chicago" class="option">chicago</li><li data-value="London" class="option">London</li><li data-value="Los Angeles" class="option">Los Angeles</li><li data-value="New York" class="option">New York</li><li data-value="New Jersey" class="option">New Jersey</li></ul></div>
-                                    </div>
+                                    @{
+                                        var countries = ViewBag.countries as IEnumerable<DataAccessLayer.Models.Entities.Country>;
+                                        if (countries != null)
+                                        {
+                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
+                                                <select class="nice-select" id="country-ads">
+                                                    <option value="0">Choose Country</option>
+                                                    @foreach (var item in countries)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        }
+                                    }
+
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                        <select class="nice-select" style="display: none;">
-                                            <option>Property Status</option>
-                                            <option>Open house</option>
-                                            <option>Rent</option>
-                                            <option>Sale</option>
-                                            <option>Sold</option>
-                                        </select><div class="nice-select" tabindex="0"><span class="current">Property Status</span><ul class="list"><li data-value="Property Status" class="option selected">Property Status</li><li data-value="Open house" class="option">Open house</li><li data-value="Rent" class="option">Rent</li><li data-value="Sale" class="option">Sale</li><li data-value="Sold" class="option">Sold</li></ul></div>
+                                        <select class="nice-select"id="need-ads">
+                                            <option value="Rent">Rent</option>
+                                            <option value="Sell">Sell</option>
+                                        </select>
                                     </div>
-                                    <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
-                                        <select class="nice-select" style="display: none;">
-                                            <option>Property Type</option>
-                                            <option>Apartment</option>
-                                            <option>Co-op</option>
-                                            <option>Condo</option>
-                                            <option>Single Family Home</option>
-                                        </select><div class="nice-select" tabindex="0"><span class="current">Property Type</span><ul class="list"><li data-value="Property Type" class="option selected">Property Type</li><li data-value="Apartment" class="option">Apartment</li><li data-value="Co-op" class="option">Co-op</li><li data-value="Condo" class="option">Condo</li><li data-value="Single Family Home" class="option">Single Family Home</li></ul></div>
-                                    </div>
+
+                                    @{
+                                        var categories = ViewBag.categories as IEnumerable<DataAccessLayer.Models.Entities.Category>;
+                                        if (categories != null)
+                                        {
+                                            <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
+                                                <select class="nice-select" id="category-ads">
+                                                    <option value="0">Category</option>
+                                                    @foreach (var item in categories)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        }
+                                    }
+
+
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
                                         <div class="btn-wrapper text-center mt-0">
                                             <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                            <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</a>
+                                            <a href="javascript:void(0)" class="btn theme-btn-1 btn-effect-1 text-uppercase" id="findads">Find Now</a>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="ltn__form_tab_1_2">
+                        <!--<div class="tab-pane fade" id="ltn__form_tab_1_2">
                             <div class="car-dealer-form-inner">
                                 <form action="#" class="ltn__car-dealer-form-box row">
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                        <select class="nice-select" style="display: none;">
-                                            <option>Choose Area</option>
+                                        <select class="nice-select" style="display: none;" id="">
+                                            <option>Choose Country</option>
                                             <option>chicago</option>
                                             <option>London</option>
                                             <option>Los Angeles</option>
@@ -160,14 +172,14 @@
                                         </select><div class="nice-select" tabindex="0"><span class="current">Property Type</span><ul class="list"><li data-value="Property Type" class="option selected">Property Type</li><li data-value="Apartment" class="option">Apartment</li><li data-value="Co-op" class="option">Co-op</li><li data-value="Condo" class="option">Condo</li><li data-value="Single Family Home" class="option">Single Family Home</li></ul></div>
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                        <div class="btn-wrapper text-center mt-0">
-                                            <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                            <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Properties</a>
+                                        <div class="btn-wrapper text-center mt-0">-->
+                        <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
+                        <!--<a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Properties</a>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -239,164 +251,101 @@
                 </div>
             </div>
         </div>
-        <div class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item ltn__blog-item-3">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="~/Content/assets/img/blog/1.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: Admin</a>
-                                </li>
-                                <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>Decorate</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title"><a href="blog-details.html">10 Brilliant Ways To Decorate Your Home</a></h3>
-                        <div class="ltn__blog-meta-btn">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2021</li>
-                                </ul>
+        @{
+            var latestAds = ViewBag.latestAds as IEnumerable<DataAccessLayer.Models.ViewModel.AdsViewModel>;
+            if (latestAds != null)
+            {
+                <div class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
+                    @foreach (var item in latestAds)
+                    {
+                        if (item.Need == "Sell")
+                        {
+                            <div class="col-lg-12">
+                                <div class="ltn__blog-item ltn__blog-item-3">
+                                    <div class="ltn__blog-img">
+                                        <a href="@Url.Action("AdsDetail", "Sell", new { id = item.Id })"><img src="~/Content/assets/img/blog/1.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="ltn__blog-brief">
+                                        <div class="ltn__blog-meta">
+                                            <ul>
+                                                <li class="ltn__blog-author">
+                                                    <a href="javascript:void(0)"><i class="far fa-user"></i>by: @item.UserFullname</a>
+                                                </li>
+                                                <li class="ltn__blog-tags">
+                                                    <a href="javascript:void(0)"><i class="fas fa-tags"></i>@item.CategoryName</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="ltn__blog-title"><a href="@Url.Action("AdsDetail", "Sell", new { id = item.Id })">@item.Title</a></h3>
+                                        <div class="ltn__blog-meta-btn">
+                                            <div class="ltn__blog-meta">
+                                                <ul>
+                                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>@item.CreatedAt</li>
+                                                </ul>
+                                            </div>
+                                            <div class="ltn__blog-btn">
+                                                <a href="@Url.Action("AdsDetail", "Sell", new { id = item.Id })">Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ltn__blog-btn">
-                                <a href="blog-details.html">Read more</a>
+                        }
+                        else if (item.Need == "Rent")
+                        {
+                            <div class="col-lg-12">
+                                <div class="ltn__blog-item ltn__blog-item-3">
+                                    <div class="ltn__blog-img">
+                                        <a href="@Url.Action("AdsDetail", "Rent", new { id = item.Id })"><img src="~/Content/assets/img/blog/1.jpg" alt="#"></a>
+                                    </div>
+                                    <div class="ltn__blog-brief">
+                                        <div class="ltn__blog-meta">
+                                            <ul>
+                                                <li class="ltn__blog-author">
+                                                    <a href="javascript:void(0)"><i class="far fa-user"></i>by: @item.UserFullname</a>
+                                                </li>
+                                                <li class="ltn__blog-tags">
+                                                    <a href="javascript:void(0)"><i class="fas fa-tags"></i>@item.CategoryName</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="ltn__blog-title"><a href="@Url.Action("AdsDetail", "Rent", new { id = item.Id })">@item.Title</a></h3>
+                                        <div class="ltn__blog-meta-btn">
+                                            <div class="ltn__blog-meta">
+                                                <ul>
+                                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>@item.CreatedAt</li>
+                                                </ul>
+                                            </div>
+                                            <div class="ltn__blog-btn">
+                                                <a href="@Url.Action("AdsDetail", "Rent", new { id = item.Id })">Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        }
+
+                    }
                 </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item ltn__blog-item-3">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="~/Content/assets/img/blog/2.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: Admin</a>
-                                </li>
-                                <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>Interior</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title"><a href="blog-details.html">The Most Inspiring Interior Design Of 2021</a></h3>
-                        <div class="ltn__blog-meta-btn">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>July 23, 2021</li>
-                                </ul>
-                            </div>
-                            <div class="ltn__blog-btn">
-                                <a href="blog-details.html">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item ltn__blog-item-3">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="~/Content/assets/img/blog/3.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: Admin</a>
-                                </li>
-                                <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>Estate</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title"><a href="blog-details.html">Recent Commercial Real Estate Transactions</a></h3>
-                        <div class="ltn__blog-meta-btn">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>May 22, 2021</li>
-                                </ul>
-                            </div>
-                            <div class="ltn__blog-btn">
-                                <a href="blog-details.html">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item ltn__blog-item-3">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="~/Content/assets/img/blog/4.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: Admin</a>
-                                </li>
-                                <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>Room</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title"><a href="blog-details.html">Renovating a Living Room? Experts Share Their Secrets</a></h3>
-                        <div class="ltn__blog-meta-btn">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2021</li>
-                                </ul>
-                            </div>
-                            <div class="ltn__blog-btn">
-                                <a href="blog-details.html">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Item -->
-            <div class="col-lg-12">
-                <div class="ltn__blog-item ltn__blog-item-3">
-                    <div class="ltn__blog-img">
-                        <a href="blog-details.html"><img src="~/Content/assets/img/blog/5.jpg" alt="#"></a>
-                    </div>
-                    <div class="ltn__blog-brief">
-                        <div class="ltn__blog-meta">
-                            <ul>
-                                <li class="ltn__blog-author">
-                                    <a href="#"><i class="far fa-user"></i>by: Admin</a>
-                                </li>
-                                <li class="ltn__blog-tags">
-                                    <a href="#"><i class="fas fa-tags"></i>Trends</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h3 class="ltn__blog-title"><a href="blog-details.html">7 home trends that will shape your house in 2021</a></h3>
-                        <div class="ltn__blog-meta-btn">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>June 24, 2021</li>
-                                </ul>
-                            </div>
-                            <div class="ltn__blog-btn">
-                                <a href="blog-details.html">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-        </div>
+            }
+        }
     </div>
 </div>
 <!-- BLOG AREA END -->
+@section scripts {
+    <script>
+        $("#findads").click(function () {
+            var countryId = $("#country-ads option:selected").val()
+            var need = $("#need-ads option:selected").val()
+            var categoryId = $("#category-ads option:selected").val()
+
+            if (need == "Rent") {
+                window.location.href = "/Rent?catId=" + categoryId + "&countryId=" + countryId
+                                
+            } else if (need == "Sell") {
+                window.location.href = "/Sell?catId=" + categoryId + "&countryId=" + countryId
+
+            } 
+        })
+    </script>
+}

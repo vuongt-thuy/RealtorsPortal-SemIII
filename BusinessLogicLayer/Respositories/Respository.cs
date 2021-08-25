@@ -18,6 +18,7 @@ namespace BusinessLogicLayer.Respositories
         {
             db = new DataContext();
             tbl = db.Set<T>();
+            //db.Configuration.ProxyCreationEnabled = true;
         }
 
         public bool CheckDuplicate(Expression<Func<T, bool>> predicate)
@@ -111,7 +112,7 @@ namespace BusinessLogicLayer.Respositories
                 Save();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }

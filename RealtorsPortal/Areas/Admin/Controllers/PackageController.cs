@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.Respositories;
+﻿using BusinessLogicLayer.Mapper;
+using BusinessLogicLayer.Respositories;
 using DataAccessLayer.Models.Entities;
 using RealtorsPortal.Areas.Admin.Utils;
 using System;
@@ -28,8 +29,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadPackages()
         {
-            var data = resPackage.GetAll().ToList();
-            return Json(resPackage.GetAll(), JsonRequestBehavior.AllowGet);
+            var data = resPackage.GetAll().Select(x => new PackageMapper().Mapping(x)).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -45,7 +46,7 @@ namespace RealtorsPortal.Areas.Admin.Controllers
                     {
                         return Json(new ResponeJSON<Package>
                         {
-                            statusCode = 200,
+                            statusCode = 200, 
                             msg = "Create Package Successfully!",
                             data = package
                         }, JsonRequestBehavior.AllowGet);

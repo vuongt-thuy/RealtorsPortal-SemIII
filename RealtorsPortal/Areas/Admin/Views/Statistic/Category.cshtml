@@ -8,3 +8,76 @@
 @section section_title { Statistic Category }
 @section breadcrumb { Statistic Category }
 
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Month</label>
+                <select class="form-control" id="month">
+                    @for (int i = 1; i <= 12; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Year</label>
+                <select class="form-control" id="year">
+                    @for (int i = 2021; i <= DateTime.Now.Year; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="chartContainer"></div>
+
+
+@section scripts {
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            GetChart(@DateTime.Now.Month, @DateTime.Now.Year)
+            $("#month").val(@DateTime.Now.Month).change();
+            $("#year").val(@DateTime.Now.Year).change();
+        })
+
+        $('#year').on('change', function () {
+            GetChart($('#month :selected').text(), $('#year :selected').text())
+        });
+
+        $('#month').on('change', function () {
+            GetChart($('#month :selected').text(), $('#year :selected').text())
+        });
+
+        function GetChart(month, year) {
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Statistic/ChartCategory",
+                data: { month: month, year: year },
+                success: function (res) {
+                    console.log(res.data)
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        theme: "light2",
+                        animationEnabled: true,
+                        title: {
+                            text: res.title
+                        },
+                        data: [
+                            {
+                                type: "column",
+                                dataPoints: res.data
+                            }
+                        ]
+                    });
+                    chart.render();
+                }
+            })
+        }
+    </script>
+}
+

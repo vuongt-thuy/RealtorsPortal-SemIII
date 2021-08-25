@@ -15,17 +15,19 @@ namespace RealtorsPortal.Areas.Admin.Controllers
     {
         private Respository<User> resUser;
         private Respository<Ads> resAds;
+        private Respository<Category> resCat;
 
         public StatisticController ()
         {
             resUser = new Respository<User>();
             resAds = new Respository<Ads>();
+            resCat = new Respository<Category>();
         }
 
         // GET: Admin/Statistic
         public ActionResult Category()
         {
-            return View();
+            return View("Category");
         }
 
         public ActionResult Users()
@@ -66,6 +68,22 @@ namespace RealtorsPortal.Areas.Admin.Controllers
             return Json(new
             {
                 title = "Statistic Of Advertisements",
+                data = dataPoints,
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ChartCategory(int month, int year)
+        {
+            List<DataPoint> dataPoints = new List<DataPoint>();
+
+            var cats = resCat.GetList(x => x.Active == true && x.CreatedAt.Month == month && x.CreatedAt.Year == year);
+            foreach (var c in cats)
+            {
+                dataPoints.Add(new DataPoint(c.Ads.Count, c.Name));
+            }
+            return Json(new
+            {
+                title = "Number Of Ads Posted By Category",
                 data = dataPoints,
             }, JsonRequestBehavior.AllowGet);
         }

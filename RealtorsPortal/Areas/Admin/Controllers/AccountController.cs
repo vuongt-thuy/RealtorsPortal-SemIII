@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.Respositories;
+﻿using BusinessLogicLayer.Mapper;
+using BusinessLogicLayer.Respositories;
 using DataAccessLayer.Models.Entities;
 using RealtorsPortal.Areas.Admin.Utils;
 using RealtorsPortal.Controllers;
@@ -196,7 +197,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadAdminUsers()
         {
-            return Json(resUser.GetList(x => x.RoleId == SystemConstant.ADMIN), JsonRequestBehavior.AllowGet);
+            var data = resUser.GetList(x => x.RoleId == SystemConstant.ADMIN).Select(x => new UserMapper().Mapping(x)).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         // Private Sellers
@@ -321,7 +323,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadPrivateSellers()
         {
-            return Json(resUser.GetList(x => x.RoleId == SystemConstant.PRIVATE_SELLER), JsonRequestBehavior.AllowGet);
+            var data = resUser.GetList(x => x.RoleId == SystemConstant.PRIVATE_SELLER).Select(x => new UserMapper().Mapping(x)).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         // Agentss
@@ -447,7 +450,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadAgents()
         {
-            return Json(resUser.GetList(x => x.RoleId == SystemConstant.AGENT), JsonRequestBehavior.AllowGet);
+            var data = resUser.GetList(x => x.RoleId == SystemConstant.AGENT).Select(x => new UserMapper().Mapping(x)).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -573,7 +577,8 @@ namespace RealtorsPortal.Areas.Admin.Controllers
 
         public ActionResult LoadVistors()
         {
-            return Json(resUser.GetList(x => x.RoleId == SystemConstant.VISITOR), JsonRequestBehavior.AllowGet);
+            var data = resUser.GetList(x => x.RoleId == SystemConstant.VISITOR).Select(x => new UserMapper().Mapping(x)).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Detail(int id)

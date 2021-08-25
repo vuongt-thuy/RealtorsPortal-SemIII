@@ -25,6 +25,7 @@ namespace DataAccessLayer.Models.ViewModel
         public string Description { get; set; }
         public string Note { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public string Need { get; set; }
         public string UnitPrice { get; set; }
         public int Priority { get; set; }
